@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Case: End-to-End Mortgage Analytics - Fannie Mae’s Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text"> </span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./expository_overview.html" rel="" target="">
+ <span class="menu-text">Expository Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">More…</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
+        <li>
+    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
+ <span class="dropdown-text">Student Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
+ <span class="dropdown-text">Instructor Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./about.html" rel="" target="">
+ <span class="dropdown-text">About</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">MSBA…</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
+        <li>
+    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
+ <span class="dropdown-text">Case</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
+ <span class="dropdown-text">Case Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
+ <span class="dropdown-text">Instructor Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data_raw.html">Fannie Mae’s Data</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Data</p>
+</div></div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_raw.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Fannie Mae’s Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_consolidation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Consolidation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_one_year.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A One Year Sample</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_all_years_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A 10% Sample Covering All Years</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_train_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Train / Test Split</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link active" data-scroll-target="#the-dataset">The Dataset</a></li>
+  <li><a href="#access" id="toc-access" class="nav-link" data-scroll-target="#access">Access</a></li>
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#helpful-resources" id="toc-helpful-resources" class="nav-link" data-scroll-target="#helpful-resources">Helpful resources</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Fannie Mae’s Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="the-dataset">The Dataset</h3>
+<p>Fannie Mae publishes granular data representative of a portion of the single-family home mortgages it acquired since year 2000. The data is available on their website here: <a href="https://capitalmarkets.fanniemae.com/credit-risk-transfer/single-family-credit-risk-transfer/fannie-mae-single-family-loan-performance-data">Fannie Mae Single-Family Loan Performance Data</a>. The types of mortgages included in the dataset, and various exclusions and limitations, are described in items 1 and 2 of this <a href="https://capitalmarkets.fanniemae.com/media/8921/display">FAQ</a> document.</p>
+<p>Throughout this case, we refer to the <em>July 27, 2023 release</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> of the <em>primary</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> dataset. This dataset covers approximately 55 million mortgage loans. <em>Monthly</em> performance data is provided for <em>each loan</em> starting from the time of acquisition through to the end of the first quarter of year 2023 or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier. Therefore, each row pertains to a particular loan at a particular month. The full dataset consists of approximately 2.5 billion records (rows) and approximately 65-70 applicable fields (columns).</p>
+</section>
+<section id="access" class="level3">
+<h3 class="anchored" data-anchor-id="access">Access</h3>
+<p>To access the Fannie Mae Single-Family Loan Performance data you need to register on <a href="https://capitalmarkets.fanniemae.com/tools-applications/data-dynamics">Data Dynamics</a>. Data Dynamics is an online tool provided by Fannie Mae to access and explore its loan performance, and other, datasets.</p>
+</section>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
+<p>The data is subdivided into quarterly files. Data on all loans acquired by Fannie Mae in a given quarter are included in that quarter’s file. That is, each loan appears in exactly one quarterly file.</p>
+<p>A quarterly file contains <em>all</em> monthly reporting periods for the loans acquired in that quarter. That file provides the full monthly performance history of each loan starting from its acquisition quarter until the present (end of year 2022) or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier.</p>
+<p>Note that some loans acquired in a given quarter may have <em>originated</em> in earlier quarters. Note also that, while the files are labelled as “csv”, the fields are in fact separated by the vertical line “|” delimiter<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Fannie Mae provides a (tiny) <a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/sf-loan-performance-data-sample.csv">sample file</a>, consisting of a handful of loan, to illustrate the structure of the dataset. The data files contain no column headings. However, a detailed description of the fields, identified positionally, is available in the accompanying “CRT Glossary and File Layout” document [<a href="https://capitalmarkets.fanniemae.com/media/6931/display">pdf</a>][<a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/crt-file-layout-and-glossary.xlsx">Excel</a>].</p>
+<p>There is a total of 108 columns in each quarterly data file. The following ordered list of column names can be helpful in importing the data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>col_names = ["Reference Pool ID", "Loan Identifier", "Monthly Reporting Period", "Channel", "Seller Name", </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             "Servicer Name", "Master Servicer", "Original Interest Rate", "Current Interest Rate", "Original UPB", </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>             "UPB at Issuance", "Current Actual UPB", "Original Loan Term", "Origination Date", "First Payment Date", </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             "Loan Age", "Remaining Months to Legal Maturity", "Remaining Months To Maturity", "Maturity Date", "Original Loan to Value Ratio (LTV)", </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>             "Original Combined Loan to Value Ratio (CLTV)", "Number of Borrowers", "Debt-To-Income (DTI)", "Borrower Credit Score at Origination", "Co-Borrower Credit Score at Origination", </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>             "First Time Home Buyer Indicator", "Loan Purpose", "Property Type", "Number of Units", "Occupancy Status", </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>             "Property State", "Metropolitan Statistical Area (MSA)", "Zip Code Short", "Mortgage Insurance Percentage", "Amortization Type", </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             "Prepayment Penalty Indicator", "Interest Only Loan Indicator", "Interest Only First Principal And Interest Payment Date", "Months to Amortization", "Current Loan Delinquency Status", </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>             "Loan Payment History", "Modification Flag", "Mortgage Insurance Cancellation Indicator", "Zero Balance Code", "Zero Balance Effective Date",</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             "UPB at the Time of Removal", "Repurchase Date", "Scheduled Principal Current", "Total Principal Current", "Unscheduled Principal Current", </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>             "Last Paid Installment Date", "Foreclosure Date", "Disposition Date", "Foreclosure Costs", "Property Preservation and Repair Costs",</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>             "Asset Recovery Costs", "Miscellaneous Holding Expenses and Credits", "Associated Taxes for Holding Property", "Net Sales Proceeds", "Credit Enhancement Proceeds", </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>             "Repurchase Make Whole Proceeds", "Other Foreclosure Proceeds", "Modification-Related Non-Interest Bearing UPB", "Principal Forgiveness Amount", "Original List Start Date", </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>             "Original List Price", "Current List Start Date", "Current List Price", "Borrower Credit Score At Issuance", "Co-Borrower Credit Score At Issuance", </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>             "Borrower Credit Score Current", "Co-Borrower Credit Score Current", "Mortgage Insurance Type", "Servicing Activity Indicator", "Current Period Modification Loss Amount",</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>             "Cumulative Modification Loss Amount", "Current Period Credit Event Net Gain or Loss", "Cumulative Credit Event Net Gain or Loss", "Special Eligibility Program", "Foreclosure Principal Write-off Amount", </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>             "Relocation Mortgage Indicator", "Zero Balance Code Change Date", "Loan Holdback Indicator", "Loan Holdback Effective Date", "Delinquent Accrued Interest", </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>             "Property Valuation Method", "High Balance Loan Indicator", "ARM Initial Fixed-Rate Period  ≤ 5 YR Indicator", "ARM Product Type", "Initial Fixed-Rate Period", </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>             "Interest Rate Adjustment Frequency", "Next Interest Rate Adjustment Date", "Next Payment Change Date", "Index", "ARM Cap Structure", </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>             "Initial Interest Rate Cap Up Percent", "Periodic Interest Rate Cap Up Percent", "Lifetime Interest Rate Cap Up Percent", "Mortgage Margin", "ARM Balloon Indicator",</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>             "ARM Plan Number", "Borrower Assistance Plan", "High Loan to Value (HLTV) Refinance Option Indicator", "Deal Name", "Repurchase Make Whole Proceeds Flag", </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>             "Alternative Delinquency Resolution", "Alternative Delinquency Resolution Count", "Total Deferral Amount"</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The fields “Loan Identifier” and “Monthly Reporting Period”, in conjunction, serve as unique key identifier to the dataset records.</p>
+<p>We also provide a Python dictionary of suggested data types for each field that can be optionally used when importing the data:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>col_dtypes = {"Reference Pool ID": "string", "Loan Identifier": "string", "Monthly Reporting Period": "object", "Channel": "string", "Seller Name": "string", </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              "Servicer Name": "string", "Master Servicer": "string", "Original Interest Rate": "float64", "Current Interest Rate": "float64", "Original UPB": "float64", </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              "UPB at Issuance": "float64", "Current Actual UPB": "float64", "Original Loan Term": "float64", "Origination Date": "object", "First Payment Date": "object", </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              "Loan Age": "float64", "Remaining Months to Legal Maturity": "float64", "Remaining Months To Maturity": "float64", "Maturity Date": "object", "Original Loan to Value Ratio (LTV)": "float64", </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>              "Original Combined Loan to Value Ratio (CLTV)": "float64", "Number of Borrowers": "Int64", "Debt-To-Income (DTI)": "float64", "Borrower Credit Score at Origination": "float64", "Co-Borrower Credit Score at Origination": "float64", </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>              "First Time Home Buyer Indicator": "string", "Loan Purpose": "string", "Property Type": "string", "Number of Units": "float64", "Occupancy Status": "string", </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>              "Property State": "string", "Metropolitan Statistical Area (MSA)": "string", "Zip Code Short": "string", "Mortgage Insurance Percentage": "float64", "Amortization Type": "string", </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>              "Prepayment Penalty Indicator": "string", "Interest Only Loan Indicator": "string", "Interest Only First Principal And Interest Payment Date": "object", "Months to Amortization": "float64", "Current Loan Delinquency Status": "string", </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>              "Loan Payment History": "string", "Modification Flag": "string", "Mortgage Insurance Cancellation Indicator": "string", "Zero Balance Code": "string", "Zero Balance Effective Date": "object",</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              "UPB at the Time of Removal": "float64", "Repurchase Date": "object", "Scheduled Principal Current": "float64", "Total Principal Current": "float64", "Unscheduled Principal Current": "float64", </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>              "Last Paid Installment Date": "object", "Foreclosure Date": "object", "Disposition Date": "object", "Foreclosure Costs": "float64", "Property Preservation and Repair Costs": "float64",</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>              "Asset Recovery Costs": "float64", "Miscellaneous Holding Expenses and Credits": "float64", "Associated Taxes for Holding Property": "float64", "Net Sales Proceeds": "float64", "Credit Enhancement Proceeds": "float64", </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>              "Repurchase Make Whole Proceeds": "float64", "Other Foreclosure Proceeds": "float64", "Modification-Related Non-Interest Bearing UPB": "float64", "Principal Forgiveness Amount": "float64", "Original List Start Date": "object", </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>              "Original List Price": "float64", "Current List Start Date": "object", "Current List Price": "float64", "Borrower Credit Score At Issuance": "float64", "Co-Borrower Credit Score At Issuance": "float64", </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>              "Borrower Credit Score Current": "float64", "Co-Borrower Credit Score Current": "float64", "Mortgage Insurance Type": "string", "Servicing Activity Indicator": "string", "Current Period Modification Loss Amount": "float64",</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>              "Cumulative Modification Loss Amount": "float64", "Current Period Credit Event Net Gain or Loss": "float64", "Cumulative Credit Event Net Gain or Loss": "float64", "Special Eligibility Program": "string", "Foreclosure Principal Write-off Amount": "float64", </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>              "Relocation Mortgage Indicator": "string", "Zero Balance Code Change Date": "object", "Loan Holdback Indicator": "string", "Loan Holdback Effective Date": "object", "Delinquent Accrued Interest": "float64", </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>              "Property Valuation Method": "string", "High Balance Loan Indicator": "string", "ARM Initial Fixed-Rate Period  ≤ 5 YR Indicator": "string", "ARM Product Type": "string", "Initial Fixed-Rate Period": "float64", </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>              "Interest Rate Adjustment Frequency": "float64", "Next Interest Rate Adjustment Date": "object", "Next Payment Change Date": "object", "Index": "string", "ARM Cap Structure": "string", </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>              "Initial Interest Rate Cap Up Percent": "float64", "Periodic Interest Rate Cap Up Percent": "float64", "Lifetime Interest Rate Cap Up Percent": "float64", "Mortgage Margin": "float64", "ARM Balloon Indicator": "string",</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>              "ARM Plan Number": "float64", "Borrower Assistance Plan": "string", "High Loan to Value (HLTV) Refinance Option Indicator": "string", "Deal Name": "string", "Repurchase Make Whole Proceeds Flag": "string", </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>              "Alternative Delinquency Resolution": "string", "Alternative Delinquency Resolution Count": "float64", "Total Deferral Amount": "float64"</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>             }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Several fields do not apply to or do not vary across the loans included in this dataset and can be excluded from analysis<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_na = ["Reference Pool ID", "Master Servicer", "UPB at Issuance", "Prepayment Penalty Indicator", "Interest Only Loan Indicator", </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           "Interest Only First Principal And Interest Payment Date", "Months to Amortization""Mortgage Insurance Cancellation Indicator", "Repurchase Date", "Scheduled Principal Current", "Unscheduled Principal Current", </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           "Original List Start Date", "Original List Price", "Current List Start Date", "Current List Price", "Borrower Credit Score At Issuance", </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           "Co-Borrower Credit Score At Issuance", "Borrower Credit Score Current", "Co-Borrower Credit Score Current", "Current Period Modification Loss Amount", "Cumulative Modification Loss Amount", </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>           "Current Period Credit Event Net Gain or Loss", "Cumulative Credit Event Net Gain or Loss", "Zero Balance Code Change Date", "Loan Holdback Indicator", "Loan Holdback Effective Date", </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           "Delinquent Accrued Interest", "ARM Initial Fixed-Rate Period  ≤ 5 YR Indicator", "ARM Product Type", "Initial Fixed-Rate Period", "Interest Rate Adjustment Frequency", </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>           "Next Interest Rate Adjustment Date", "Next Payment Change Date", "Index", "ARM Cap Structure", "Initial Interest Rate Cap Up Percent", </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           "Periodic Interest Rate Cap Up Percent", "Lifetime Interest Rate Cap Up Percent", "Mortgage Margin", "ARM Balloon Indicator", "ARM Plan Number", </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           "Deal Name"</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The remaining columns, aside from “Loan Identifier” and “Monthly Reporting Period”, can be partitioned into two sets: <strong>static</strong> and <strong>dynamic</strong>. A loan’s static fields do not change over reporting periods and generally denote loan or borrower characteristics at the time of origination or acquisition; e.g.&nbsp;“Original UPB”. Dynamic fields, on the other hand, can or are expected to change over time; e.g.&nbsp;“Current Actual UPB”. We provide below a list of static and of dynamic column names:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>col_static = ["Channel", "Seller Name", "Original Interest Rate", "Original UPB", "Original Loan Term", </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>              "Origination Date", "First Payment Date", "Original Loan to Value Ratio (LTV)", "Original Combined Loan to Value Ratio (CLTV)", "Number of Borrowers", </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              "Debt-To-Income (DTI)", "Borrower Credit Score at Origination", "Co-Borrower Credit Score at Origination", "First Time Home Buyer Indicator", "Loan Purpose", </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              "Property Type", "Number of Units", "Occupancy Status", "Property State", "Metropolitan Statistical Area (MSA)", </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              "Zip Code Short", "Mortgage Insurance Percentage", "Amortization Type", "Mortgage Insurance Type", "Special Eligibility Program", </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              "Relocation Mortgage Indicator", </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>             ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>col_dynamic = ["Servicer Name", "Current Interest Rate", "Current Actual UPB", "Loan Age", "Remaining Months to Legal Maturity", </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               "Remaining Months To Maturity", "Maturity Date", "Current Loan Delinquency Status", "Loan Payment History", "Modification Flag", </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>               "Zero Balance Code", "Zero Balance Effective Date", "UPB at the Time of Removal", "Total Principal Current", "Last Paid Installment Date", </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>               "Foreclosure Date", "Disposition Date", "Foreclosure Costs", "Property Preservation and Repair Costs", "Asset Recovery Costs", </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>               "Miscellaneous Holding Expenses and Credits", "Associated Taxes for Holding Property", "Net Sales Proceeds", "Credit Enhancement Proceeds", "Repurchase Make Whole Proceeds", </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               "Other Foreclosure Proceeds", "Modification-Related Non-Interest Bearing UPB", "Principal Forgiveness Amount", "Servicing Activity Indicator", "Foreclosure Principal Write-off Amount", </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>               "Property Valuation Method", "High Balance Loan Indicator", "Borrower Assistance Plan", "High Loan to Value (HLTV) Refinance Option Indicator", "Repurchase Make Whole Proceeds Flag", </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>               "Alternative Delinquency Resolution", "Alternative Delinquency Resolution Count", "Total Deferral Amount"</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>               ] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note: We listed “Metropolitan Statistical Area (MSA)” as a static column though, strictly speaking, MSA definitions do change over time.</p>
+<p>Finally, it is important to recognize date columns and parse them as such during file import:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>col_dates = ["Monthly Reporting Period", "Origination Date", "First Payment Date", "Maturity Date", "Interest Only First Principal And Interest Payment Date",  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>             "Zero Balance Effective Date", "Repurchase Date", "Last Paid Installment Date", "Foreclosure Date", "Disposition Date", </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             "Original List Start Date", "Current List Start Date", "Zero Balance Code Change Date", "Loan Holdback Effective Date", "Next Interest Rate Adjustment Date", </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             "Next Payment Change Date"]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="helpful-resources" class="level3">
+<h3 class="anchored" data-anchor-id="helpful-resources">Helpful resources</h3>
+<p>Fannie Mae provides various resources to help access, understand, and summarize the data. In particular, start by examining this <a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/pdf/loan-performance-data-tutorial.pdf">Loan Performance Data Tutorial</a> and browse the other resources available on their website <a href="https://capitalmarkets.fanniemae.com/credit-risk-transfer/single-family-credit-risk-transfer/fannie-mae-single-family-loan-performance-data">here</a>.</p>
+<p>You may also find this case expository note <a href="./expository_note_large_data.html">Working with Large Datasets</a> helpful.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Fannie Mae updates the dataset quarterly<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>We ignore the accompanying HARP dataset<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This delimiter is useful when some values include commas<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Fannie Mae provides them for compatibility with other dataset disclosures<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2023, A. Farahat and R. Ravi
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Case: End-to-End Mortgage Analytics - Expository Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text"> </span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data_overview.html" rel="" target="">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./expository_overview.html" rel="" target="">
+ <span class="menu-text">Expository Notes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">More…</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
+        <li>
+    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
+ <span class="dropdown-text">Student Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
+ <span class="dropdown-text">Instructor Resources</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./about.html" rel="" target="">
+ <span class="dropdown-text">About</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">MSBA…</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
+        <li>
+    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
+ <span class="dropdown-text">Case</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
+ <span class="dropdown-text">Case Modules</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
+ <span class="dropdown-text">Instructor Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#case-study-managing-risk-at-home-loan-bank" id="toc-case-study-managing-risk-at-home-loan-bank" class="nav-link active" data-scroll-target="#case-study-managing-risk-at-home-loan-bank">Case Study: Managing Risk at Home Loan Bank</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">1. Background</a>
+  <ul class="collapse">
+  <li><a href="#the-llpa-matrix-and-application" id="toc-the-llpa-matrix-and-application" class="nav-link" data-scroll-target="#the-llpa-matrix-and-application">1.1 The LLPA Matrix and Application</a></li>
+  <li><a href="#simplification" id="toc-simplification" class="nav-link" data-scroll-target="#simplification">1.2 Simplification</a></li>
+  </ul></li>
+  <li><a href="#task-outline" id="toc-task-outline" class="nav-link" data-scroll-target="#task-outline">2. Task Outline</a>
+  <ul class="collapse">
+  <li><a href="#week-1-reading-this-case" id="toc-week-1-reading-this-case" class="nav-link" data-scroll-target="#week-1-reading-this-case">2.1 Week 1: Reading this case</a></li>
+  <li><a href="#week-2-downloading-and-understanding-available-data" id="toc-week-2-downloading-and-understanding-available-data" class="nav-link" data-scroll-target="#week-2-downloading-and-understanding-available-data">2.2 Week 2: Downloading and Understanding Available Data</a></li>
+  <li><a href="#week-3-auditing-the-llpa-adjustments" id="toc-week-3-auditing-the-llpa-adjustments" class="nav-link" data-scroll-target="#week-3-auditing-the-llpa-adjustments">2.3 Week 3: Auditing the LLPA adjustments</a></li>
+  <li><a href="#week-4-predicting-default-of-loans-in-your-region" id="toc-week-4-predicting-default-of-loans-in-your-region" class="nav-link" data-scroll-target="#week-4-predicting-default-of-loans-in-your-region">2.4 Week 4: Predicting default of loans in your region</a></li>
+  <li><a href="#week-5-offering-a-better-deal" id="toc-week-5-offering-a-better-deal" class="nav-link" data-scroll-target="#week-5-offering-a-better-deal">2.5 Week 5: Offering a better deal</a></li>
+  <li><a href="#week-6-quantifying-improvement" id="toc-week-6-quantifying-improvement" class="nav-link" data-scroll-target="#week-6-quantifying-improvement">2.6 Week 6: Quantifying Improvement</a></li>
+  <li><a href="#week-7-final-presentation-and-report" id="toc-week-7-final-presentation-and-report" class="nav-link" data-scroll-target="#week-7-final-presentation-and-report">2.7 Week 7: Final presentation and report</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Expository Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="case-study-managing-risk-at-home-loan-bank" class="level1">
+<h1>Case Study: Managing Risk at Home Loan Bank<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+<p>R. Ravi</p>
+<p>Tepper School of Business, Carnegie Mellon University</p>
+<p>v2, 8 July 2019</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">1. Background</h2>
+<p>Fannie Mae (FNMA) is a U.S. government sponsored enterprise that was founded in 1938 during the great depression with the purpose of expanding the secondary mortgage market. Along with Freddie Mac (FHLMC) that was created in 1970 to buy mortgages in the secondary market and pool them to sell as mortgage-backed securities, Fannie Mae helps lenders re-invest their assets and hence increase the lenders in the market. In this way, these two organizations reduce the reliance on local associations and create a more liquid market for mortgage-indexed debt.</p>
+<p>The underlying mechanism for Fannie Mae to buy loans from smaller local banks that originate mortgages is to specify a set of conforming mortgage parameters - these are re- quirements that the loans should meet to provide an acceptable level of risk for purchase by Fannie Mae. They typically include conditions such as the following: the LTV (loan-to- value) ratio of the loan should be small, which signals that the borrower has at least come up with sufficient funds otherwise that will be liable for collection in case of default<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>The risk profile of a typical fixed-rate 30-year mortgage consists of two components: credit risk and interest rate risk. The former consists of the default risk where the borrower stops paying back the monthly installments turning the loan into delinquent state and moving it towards collection. The interest rate risk is associated with varying (U.S. Treasury’s) interest rates for investing money in risk-less deposits over the future term of the loan, which in turn is highly correlated with prevailing mortgage rates. An increase in interest rates will make the loans more profitable while a decrease will potentially lead more borrowers to refinance. Thus, this risk includes the additional optionality risk of the borrower refinancing the loan and prematurely terminating the stream of loan payments by prepayment. The business model of Fannie Mae is to purchase loans from originating banks so as to de-risk the credit risk associated with the loan; the purchased loans are then bundled into mortgage-backed securities that do not suffer credit risk but only the residual interest rate risk<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>One of the key mechanisms by which Fannie Mae is able to enable a liquid market for loans is to provide a “cash window” before the closing of every mortgage in which it is open to buy these mortgages at pre-determined rates. For mortgages that have been lent based on the conforming mortgage parameters and hence eligible for purchase by Fannie Mae as determined in their eligibility matrix, during the cash window, Fannie is open to purchasing them. When it buys these loans, it pays originators based on the features of the loan (such as the LTV or loan-to-value ratio, and borrower characteristics such as FICO score). The value at which the loans will be purchased are based on a baseline value per $100,000 along with adjustments primarily based on the LTV and borrower’s FICO score, as well as other features of the mortgage such as if the purpose was COR (Cash-out refinance), and whether the borrower obtained Subordinate Financing or Minimum Mortgage Insurance Coverage for the loan.</p>
+<section id="the-llpa-matrix-and-application" class="level3">
+<h3 class="anchored" data-anchor-id="the-llpa-matrix-and-application">1.1 The LLPA Matrix and Application</h3>
+<p>The adjustments to the baseline price are detailed in a loan-level price adjustment (LLPA) matrix that is published by Fannie Mae and sporadically updated based on market conditions. These price adjustments are cumulative in that a mortgage that has purpose COR and obtains Minimum Mortgage insurance coverage will pay the sum of the LLPA adjustments for these two features in the price. As an example, consider Example 1b from Page 6 of the December 2010 LLPA matrix published with this case. The 30-year fixed rate mortgage for the purpose of Cash-Out Refinancing (COR) by a borrower with credit score 680 on a loan with LTV (loan-to-value) ratio of 85% and obtaining Minimum Mortgage Insurance (MI) and originating in May 2011 has the following adjustments: 0.25% for the basic Adverse Market Delivery Charge (AMDC) of taking up the mortgage<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, the credit score and LTV combination of the borrower adds 1.5% (from Table 2 bottom half for loans originating after April 1, 2011) the COR purpose for a loan with this LTV-FICO combination adds 2.5% (Table 3 bottom half) and finally the MI adds 0.125% (Table 5) for a total of 4.375% to the price of the mortgage.</p>
+<p>Mortgage originators (like banks and brokers) use the LLPA matrix in the following way. First they obtain a pricing matrix that is published by Fannie Mae based on the prevailing mortgage rate for 30-year fixed rate mortgages (See the example june2019pricing.pdf that prevailed around June 15th 2019 provided with this case). This matrix details the discounts or premiums that Fannie will pay in terms of the note rate (the annual interest rate at which the loan is closed) and the time window within which the closing will occur (thus, varying durations for the cash window). Intuitively, notes with higher rates and closed closer to the current day will fetch higher premiums. It is important to note that these prices are in basis points which are simply the percentage of the prices. Thus, the pricing premium of 5.6845 points for a loan with note rate of 5.875% to be closed within 5 days means that a loan for 100,000 USD with these parameters will fetch the originator of the mortgage 105,685 USD by selling to Fannie. Typically the note rate at which the premium or discount is at zero roughly corresponds that day’s 30-year fixed rate announced by Fannie and available as a historical record here.</p>
+<p>Consider an example of a loan originator who is trying to determine the best rate to offer a borrower by studying the prevailing pricing matrix, the LLPA matrix and her own costs and margins. Suppose a loan for 100,000 USD is to be closed on 18 June 2019, and the pricing when the loan is to be locked occurs on June 15th when the Fannie rate is between 3.375% and 3.5% and hence reflected in the enclosed june2019pricing.pdf document. Also, suppose the sum of the costs incurred by the originator plus the margin she would like to earn on closing the loan total 2,000 USD and hence 2 points. Furthermore, suppose the loan is taken out for the purpose of Cash-Out Refinancing (COR) by a borrower with credit score 690 on a loan with LTV (loan-to-value) ratio of 80%: the LTV-credit score combination in the LLPA matrix adds 1.75 points and the COR purpose adds another 1.75 points for a total of 3.5 points. Thus the originator needs to make 2 + 3:5 = 5:5 points above par to sell the loan to Fannie. This involves looking up the june2019pricing.pdf table again for the note rate that is closest to fetching 5.5 points above par (i.e., 105,500 USD), which in this case corresponds to a 5.875% final interest rate for the customer. When Fannie buys such a loan, it pays the originator 5.6845 (from the pricing matrix) minus the 3.5 points LLPA adjustment and hence a total of 102,185 USD, which in turn will cover the 2 points expectation for the costs and margins of the originator.</p>
+</section>
+<section id="simplification" class="level3">
+<h3 class="anchored" data-anchor-id="simplification">1.2 Simplification</h3>
+<p>To reconcile if Fannie’s purchases made better or worse than what they were purchased for, you should ideally simulate for each loan purchased by Fannie, the price it actually paid using the pricing matrix based on the note rate and closing window, and examine the stream of cash flows it received regarding this loan (including default costs if any). However, these prices Fannie paid are not available publicly. Moreover, each of the originators may have different costs and also seek different margins which would further obscure the calculation, since we will be unable to impute this addition that they use in computing the final interest rate in the originating process.</p>
+<p>To avoid the above two data difficulties, you can simplify the problem and just examine whether the LLPA price adjustments of Fannie are correctly benchmarked against the baseline set of loans on which these LLPA adjustments are zero. To do this, you can look at the additional default losses suffered by Fannie in each of the LLPA adjustment buckets other than a set of baseline groups (with zero LLPA adjustment) and examine how the net losses from one of these groups compares with the aggregate adjustment fee collected by Fannie on that group.</p>
+</section>
+</section>
+<section id="task-outline" class="level2">
+<h2 class="anchored" data-anchor-id="task-outline">2. Task Outline</h2>
+<p>The network of Federal Home Loan banks were established as a cooperative of local banks and lending institutions within a region to further increase liquidity in the mortgage markets. For the purpose of this case, assume that you are an Analytics Director of the Federal Home Loan bank of your region (which will be assigned based on the group that you are part of). Your goal is to design new schemes to improve the profitability of your bank without negatively impacting the mandate of increasing and enabling the liquidity of the markets for mortgages. This typically involves offering more attractive pricing schemes than Fannie in buying back loans from your local originators.</p>
+<section id="week-1-reading-this-case" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-reading-this-case">2.1 Week 1: Reading this case</h3>
+<p>You do not have any report to turn in the first week. You can take the time to read the case and understand the business context as you read the case.</p>
+</section>
+<section id="week-2-downloading-and-understanding-available-data" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-downloading-and-understanding-available-data">2.2 Week 2: Downloading and Understanding Available Data</h3>
+<p>Fannie Mae has made a portion of the data about the 30-year fixed rate loans it has purchased since 2000 and their performance over time available publicly here. To access this, you will first need to register at this website with a valid email address and basic information.</p>
+<p>To familiarize yourself with the data there are two tutorials in this main information website, along with an overview as well as sample code in R and SAS to import and combine the two data tables as explained in the tutorial. Your first task for the first week will be to work through the first tutorial and build a flat combined data file<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. You can then refine it for the specific subsamples of interest for your team (city, metropolitan statistical areas/MSA or state) later by filtering the full data using a subset of three-digit ZIP codes and/or MSA’s. You second task will be to build informative sample statistics from the data set to familiarize yourself with its characteristics.</p>
+<p>We will examine all the loans purchased in 2010 in or around four metropolitan areas: Atlanta, Dallas, New York and San Francisco. Based on the team you are in, you will work with one of these areas in more detail. In choosing which subset of loans you want to analyze as a team in your region, you may want to assemble three levels of data sets: First, you can assemble a set for a couple of three-digit ZIP codes that define a specific city in your region (e.g., Atlanta - 303 and 311, Dallas - 752 and 753, New York - 100, 101 and 102, San Francisco - 941). At the next level you can find the appropriate MSA’s that encompass a slightly larger area. Finally, you can simply gather the data set for the whole state using three-digit ZIP code refinements from the information available here.</p>
+<p>For Week 2, as a group you can first follow the steps in the tutorial for the whole data set of acquisitions from 2010. Note that in addition to downloading the acquisition data files for the four quarters of 2010, you will need to download the performance data for all quarters for all years from and including 2010. Plan to allocate enough time to download the data - if you have enough space in your machine, it may be more convenient to download all the files since 2000 as one big download (nearly 25 GB).</p>
+<p>As your submission for the second week, I would like you to carry out an analysis similar to what is given in the webinar-101.pdf in the Fannie Mae website. Note that they also detail the data cleaning choices they made and how the performance files over time have been combined into a single data file with one row per loan. You will find that watching the accompanying online tutorial will clarify a lot of the computations. Repeat this computation in your favorite computing environment for all loans acquired in 2010, and for the subsets in your regions (city, MSA, state) to spot any variations.</p>
+<p>Since we will eventually be concerned with whether the price adjustments are accurate and try to identify opportunities from any deviations, there are two measures you can pay particular attention to in your analysis. The first is the loss suffered from a set of mortgages as a percentage of the total original principal - the reason why this will be important is because the difference in this measure between a baseline group of loans (with zero LLPA adjustment) and a group with a specific adjustment will give us an estimate of the additional default cost to Fannie of serving the second group against the baseline. This can then directly be compared with the price adjustment in the LLPA matrix which is also in percentages. The Net Loss Rate calculation in the first tutorial will give you a good starting point to do this. The other measure you will eventually need to grapple with is future defaults from currently active loans. For this, it may be useful to find simple summaries and visualizations of the default behavior of set of loans that have been active for 5 or 10 years, and how they evolve over time. Other than these two speciic concerns, you can and should be open to finding interesting summaries and descriptive patterns in the data at this early stage to deepen your understanding of the data in the case context.</p>
+</section>
+<section id="week-3-auditing-the-llpa-adjustments" class="level3">
+<h3 class="anchored" data-anchor-id="week-3-auditing-the-llpa-adjustments">2.3 Week 3: Auditing the LLPA adjustments</h3>
+<p>You should begin assembling the datasets for the loans in your regions this week if you did not already in the previous. Your task this week is to determine how the loans serviced by Fannie Mae performed in their portfolio. In other words, your goal is to assess the quality of Fannie’s LLPA adjustments.</p>
+<p>For this, we will work with the set of loans in your region purchased by Fannie during 2010. As an example, let us consider a specific risk cohort which is the subset of loans with primary borrower FICO score range 660-679 and LTV range 75.01-80% having a LLPA adjustment of 2.5%, which is one of the primary risk buckets in the December 2010 LLPA matrix with positive LLPA. Note that all loans have a AMDC of 0.25% which when added to the negative LLPA adjustments in the first column of Table 2 gives a 0% adjustment. Thus we can use as a baseline group the set of loans with primary borrower FICO scores 700 or above and LTV up to 60%.</p>
+<p>For each of these different risk cohorts,, you will need to determine the default losses as a percentage of the original principal. This is also termed the Net Loss Rate in the tutorials. The calculation is relatively direct: Using the combined data set from the first week, filter out the group of loans of interest (say baseline or a specific risk cohort). For all the loans taken out in 2010 in the group, compute the net loss for the group as a percentage of the total principal.</p>
+<p>Note that for the loans that are still active from the portfolio, you still do not know their future performance. For this week, you may try to build a simple summary average of the percent of the original loan value of a cohort that defaults in each of the first through later years. Next week, you can try to refine this by trying to build a model for predicting the percentage of default in each of the years in the lifetime of the loan. For the simple summary, you will need to collect loans of your risk cohort over as many years as you can in the past, and build a table of the fraction of the original principal that defaulted each of the years that the loan has been active. For those originating in 2000, you have nearly 18 years of such data whereas for the cohort beginning in 2015, you will only have this for the first three years. Overlaying these summaries of default percentage across the life of the loan and averaging, you can get a measure of the default loss as a percentage of the principal in each year for each cohort<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. You can then use these summaries to extrapolate the losses on the loans from 2010 for the next 20 years (You will still need to make some assumptions about the losses in the last ten years of the loan for which you will have no data). Whatever you do, please be very clear in your weekly update about the assumptions you made in carrying out this audit calculation.</p>
+<p>Redo the loss differential calculation across different risk cohorts based on the LTV and FICO ranges, as well as other potential risk factors like Cash Out Refinancing as loan purpose and Investment Property, which also have corresponding LLPA adjustments. Do this across the whole data set as well as the different levels in your regions to find any significant deviations. At the end of this week, you will prepare a report summarizing your analysis of the profit/loss accrued to Fannie as a result of its pricing, and any opportunity this presents to your own Federal Home Loan bank to offer intermediation based on any geographic variation you identified.</p>
+</section>
+<section id="week-4-predicting-default-of-loans-in-your-region" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-predicting-default-of-loans-in-your-region">2.4 Week 4: Predicting default of loans in your region</h3>
+<p>The next step of the analysis is a prelude to help you design new products to offer your member banks. At a minimum, you may attempt to buy loans from your local originators (assume all of them to be member banks of your organization) by providing them a more competitive price for the loans they originate than is reflected in Fannie’s pricing. However, to be able to do this effectively, you will either need more information for risk arbitrage than what is available to Fannie, or you will need a way to cover default losses more reliably than Fannie is able to. In other words, you should either be able to get a better estimate than Fannie of the credit worthiness of the borrowers in your region whose loans you propose to buy, or you should have the potential for a risk-sharing agreement with your local banks to mitigate any risks that might arise from your better pricing. Both are plausible avenues to investigate, and let us call them loosely “<strong>risk refinement</strong>” and “<strong>risk sharing</strong>” respectively.</p>
+<p>For the former (risk refinement), you may be able to find and use additional data about specific metropolitan areas that might aid in your assessment of property value evolution which in turn may make some loans more or less advantageous due to the resulting changes in their LTV. For the latter (risk sharing), since the local banks are the actual shareholders and hence owners of your bank, they may be amenable to an agreement where your more competitive pricing is accompanied by a credit buffer that you set up with them that will be a first pool of resource to turn to in the eventuality of loss events from that bank’s portfolio. This buffer can be adjusted in size and depletion rules based on the performance of the originated loans from that bank.</p>
+<p>For the case, I would like you to propose a more competitive pricing than that of Fannie Mae for the local banks in your region. To do this, you will need to come up with a better alternative to Fannie’s LLPA matrix to make the resulting scheme more attractive to your member banks than selling to Fannie. You may assume for now that your local banks will simply choose the better of the two prices if they decide to sell, and furthermore they will sell to you in the case of a tie. If you want to be more ambitious, you may think up other sources of external data that you can employ to identify specific signals of higher and lower default risk based on your analysis and incorporate them into a new scheme that you will offer to your local banks in purchasing their originating loans.</p>
+<p>You can use the risk sharing approach as a backup and try to work on a risk refinement approach as your overall goal. For the risk refinement goal, you will first need to spot opportunities for recognizing risk more finely. As a prelude to doing this, you should evaluate the same set of historical loans originating in your assigned region, and develop a predictive model for the potential loss from these loans based on their features. By comparing this against a similar model for a randomly sampled subset of similar mortgages (same vintage, but sampled from all over the nation), you should be able to identify any key differences in the driving variables between the two. This may lead you to spot opportunities for you to adjust your pricing. While it would be simple to just adjust the same LLPA framework in the pricing (that varies according to borrower’s FICO and LTV), you may also add conditions based on on other highly predictive features of these loans in your differential analysis.</p>
+<p>Here is a non-exhaustive list of suggestions for models to enhance your ability to better understand and quantify risk for a segment of your population.</p>
+<ol type="1">
+<li><p>Spot differences in either or both the probability of default and the severity (the percentage or dollar value of the loss given default) for loans with the same risk characteristics (LTV, FICO score, purpose) between the loans for the whole nation and those for the region you are studying; You can use this to try and predict what might be the drivers for them - you could potentially find external data such as home price indices, unemployment rates or other such macroeconomic features that might affect loan payments, or any other local events or developments. The example of marking a loan value to market using the home price indices in the second tutorial webinar-102.pdf could provide some ideas for your analysis. The corresponding online tutorial is here.</p></li>
+<li><p>Enrich the modeling of the defaults on each cohort of loans over their lifetime by adding a predictive model for this percentage rather than the summaries you used last week. These loss percentages over the life of the loan can be correlated with other macroeconomic factors (such as the average mortgage rate or average unemployment rate etc. over that year) so you might use a simple regression to predict this. Alternately, you can use a two stage model where for each year of the loan, you can predict a probability of default say using a logistic regression, and then predict the loss given default amount as a function of the current tenure of the loan and all other relevant risk factors, external macroeconomic factors and geographic factors. There is a lot of scope to deploy predictive models to the default calculation such as these examples from a draft paper.</p></li>
+<li><p>While this is not a predictive exercise, you could redo the analysis of the Fannie pricing for three distinct regimes: loans purchased in 2008, 2010 and in 2013 and examine if you can see any structural differences in the pricing, and how fair Fannie’s pricing was in these regimes. You can find LLPA matrices from these three years in our Case page.</p></li>
+</ol>
+<p>For your fourth week, you will detail the specific predictive model(s) you decided to build and present the results of your predictive model, an explanation of the key drivers and the point of differentiation of your regional model from that of a national level model, and provide some ideas for exploiting these differences in a new pricing design, or other competitive schemes. Alternately, you might provide a deeper understanding of the evolution of Fannie’s pricing over three regimes. Either way, this week’s work should prepare you for the next step of finding a better prescription for your member banks.</p>
+</section>
+<section id="week-5-offering-a-better-deal" class="level3">
+<h3 class="anchored" data-anchor-id="week-5-offering-a-better-deal">2.5 Week 5: Offering a better deal</h3>
+<p>The last stage of your modeling is the prescriptive part of designing a more attractive offer for originators than Fannie’s pricing.</p>
+<p>At a minimum, you could follow a risk sharing approach and find a more competitively priced LLPA matrix assuming reasonable risk sharing parameters. For example, you may assume that all loans originating from the top 3-5 lenders in your region (assume they are local banks for now, even if that is not the case in the data) will be willing to work you as shareholders in your bank to provide an escrow pool containing a small fraction of the value of the most risky loans (e.g., 5% of the value of all loans with FICO scores below 650 and LTV above 70%). Any defaults from such loans originating from these banks will first draw down say up to 20% of the default UPB (unpaid balance) from this escrow. Based on your previous understanding of variations in your geographic region, you can now try to find conditions on the loans, the escrow amounts and the draw down rules under default that would allow you to offer better LLPA prices than Fannie. You can then do a sensitivity anlysis of these parameters and the resulting prices to determine particularly attractive schemes for offer. For example, larger fractions of the UPB covered by the escrow can lead to better price adjustment. The way in which this might be implemented is for your Federal Home Loan bank to establish first liens on collateral worth the designated escrow amount from the participating banks, which can then be drawn down in case of a default obeying the specified conditions.</p>
+<p>If you are successful in the risk refinement approach, you may design better prices based on specific features that you were able to identify to refine the risk: e.g.&nbsp;if you find home price indices in some of the MSA’s you are studying serve as leading indicators of default behavior and can see a clear pattern in the evolution of this indicator, this could lead you to propose specific better prices over all LTV categories. You could also combine the risk refinement and sharing approaches: e.g.&nbsp;you may think of a scheme where an escrow is used to cover losses due to excessive prepayments for refinancing by enforcing a draw-down condition that is triggered by the Fed’s interest rates breaching very low values. Whatever you decide, you should propose a range of design parameters that you would like to test over, do a sensitivity analysis and and finally provide a set of price adjustments in your offer with appropriate conditions to your local banks.</p>
+<p>For the report, you could continue to refine any predictive modes you built in the previous week but add at least one element of what specific design parameters (decision variables) you will be changing to offer a better product. If you do not have very good signals for risk refinement, you should at least follow the risk sharing approach and provide an analysis based on an escrow account to cover all or part of the default for some risk pools. The report for this week should contain a description of the design of better pricing you plan to offer and the variables and parameters over which you will continue to investigate to finalize one.</p>
+</section>
+<section id="week-6-quantifying-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-quantifying-improvement">2.6 Week 6: Quantifying Improvement</h3>
+<p>In this penultimate week, you should perform a set of analyses based on either of your approaches to arrive at a specific (or narrow) set of recommendations. For the task this week, describe in detail the performance of the one to three main schemes you finally arrived at. To do this, based on historical data, this time from a later period than what you trained your models on, you should provide a sense of the profitability of your schemes or revised pricing to your member banks. The key output here is the increase in profitability for the shareholders by using your new design by doing a counterfactual.</p>
+</section>
+<section id="week-7-final-presentation-and-report" class="level3">
+<h3 class="anchored" data-anchor-id="week-7-final-presentation-and-report">2.7 Week 7: Final presentation and report</h3>
+<p>Your task at this point will switch to building a convincing case for your audience about your understanding, analysis and any particularly interesting and strong predictive signals you identified and how they can be a source of designing the better pricing adjustments.</p>
+<p>The final presentation should highlight your design, its profitability, and the associated assumptions and risks with achieving these outcomes. You will need to submit a deck of slides a day before the last class to allow your referees to look through them - these referees are quite likely to include a current President and Executive VP of one of the Federal Home Loan banks in the U.S. Since they will be very close to the business, you can expect questions to be of a more business problem driven nature than technical. However, it is your key responsibility to communicate clearly the various technical models that you have employed in arriving at your predictions, as well as any mechanics that these models learn or assume. It would be important to show the power of some of the analytical modeling techniques you have now mastery over to gain better understanding, identify better predictions and put these together in a better decision framework - that is the crux of the technical work in your case. For the final presentation, you can plan for 15 minutes including Q &amp; A which will allow for about 10 slides. Please think carefully about how you communicate your analysis and the top line messages. You slides are due by midnight the day before the last class so I can share them with the other referees.</p>
+<p>Your final report can be up to ten pages long. Include a one-page executive summary that contains the main recommendations, profitability opportunities and insights that drive them. Craft the report in a linear storytelling fashion to build the case for your recommendation, what analyses allowed you to narrow down on the choices you made. Make sure to use at least one figure or table in each regular page of the report that brings alive the models and outputs from your analysis.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>A bibliography of writings on Fannie Mae, Freddie Mac and the Federal Home Loan Banks can be found here.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This case was developed by Professor R. Ravi in 2019 for the course 46-889 titled Business Value through Integrative Analytics, in the Master of Science in Business Analytics program at the Tepper School of Business, Carnegie Mellon University. Ravi is grateful to Charles Burke and Lee Cammerer at the Federal Home Loan Bank of Dallas for their insights and Kalyan Madhavan at the Federal Home Loan Bank of Dallas for his advice in developing this case.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>These initial investments are not unlike deductibles paid in insurance policies to avoid the moral hazard problem; If the borrower lacks sufficient funds to fulffill this requirement, she may take out mortgage insurance for the remaining value that will pay out the some part of the value of the property in case of default.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The MBS’s are then further sold via auction to real-estate arms of large financial firms via a BWIC (“bee-wick”) process (bids wanted in competition) that specifies the characteristics of the bundle for sale along with a deadline for bidding.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The ADMC originated in the financial crisis of 2008 and was eliminated and incorporated into the basic rates around 2015.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The R and SAS files provided with the tutorials are slightly outdated in that they process data that was published around 2015. The data has been enhanced since to add three additional fields to both the acquisition and performance files, so you will need to modify them slightly to read in the enriched data.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Do not worry about the time discounting of these losses for now. This time value adjustment will nearly vanish if the prices charged by Fannie are themselves invested at the risk-free rate or better which is the case.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2023, A. Farahat and R. Ravi
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
