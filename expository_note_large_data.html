@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./expository_overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -64,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,6 +96,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Case Modules</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link active" href="./expository_overview.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Expository Notes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
@@ -104,10 +109,41 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./expository_note_large_data.html">Working with Large Datasets</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>Expository Notes</p>
+</div></div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./expository_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./expository_note_large_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Working with Large Datasets</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
@@ -135,53 +171,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Analytics-savvy managers and business analysts recognize and are equipped to handle the challenges inherent in working with large datasets. Importing, manipulating, and pre-processing data for effective analysis is typically one of the most time and resource consuming tasks of the analytics pipeline. It is also one that is higly error-prone and costly to fix, for errors ‘baked’ into data cannot always be uncovered during analysis. You can expect the data you’ll encounter professionally to keep growing in volume (records, attributes, and files), variety of formats, and velocity of updates. As a rough guideline, you can consider datasets / dataframes exceeding 1GB in size to be “large”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> because such datasets can pose computing time and memory challenges on currently available personal computers.</p>
 <p>One learning objective of this case is to gain familiarity in working with large structured datasets. The median size of the <em>quarterly</em> datasets posted by Fannie Mae is approximately 400-500 MB in <em>compressed</em> format<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Here are a few general guidelines:</p>
 <ol type="1">
-<li><strong>Familiarize yourself with <em>binary</em> file formats</strong>. You may be most familiar with delimited flat files, such as comma separated values (csv) files, or with worksheets. While these have the advantage of being human-readable (i.e.&nbsp;you can open the data in a text editor or spreadheet program and inspect the data directly), they are generally inefficient for processing and storage. The data science community has develped highly efficient binary file formats. These include <a href="https://parquet.apache.org/docs/file-format/">Apache Parquet</a>, <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a>, <a href="https://www.hdfgroup.org/solutions/hdf5">HDF</a>, and (specific to Python) <a href="https://docs.python.org/3/library/pickle.html">Pickle</a>. The good news is that Python’s pandas library (and, to some extent, R) have functions enabling you to import and export files into any of these formats. See [https://wesmckinney.com/book/accessing-data.html#io_binary]. For example, instead of <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv</a> and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">to_csv</a> you can use <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html">read_feather</a> and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_feather.html">to_feather</a> just as easily.</li>
+<li><p><strong>Familiarize yourself with <em>binary</em> file formats</strong>. You may be most familiar with delimited flat files, such as comma separated values (csv) files, or with worksheets. While these have the advantage of being human-readable (i.e.&nbsp;you can open the data in a text editor or spreadheet program and inspect the data directly), they are generally inefficient for processing and storage. The data science community has develped highly efficient binary file formats. These include <a href="https://parquet.apache.org/docs/file-format/">Apache Parquet</a>, <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a>, <a href="https://www.hdfgroup.org/solutions/hdf5">HDF</a>, and (specific to Python) <a href="https://docs.python.org/3/library/pickle.html">Pickle</a>. The good news is that Python’s pandas library (and, to some extent, R) have functions enabling you to import and export files into any of these formats. See [https://wesmckinney.com/book/accessing-data.html#io_binary]. For example, instead of <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv</a> and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html">to_csv</a> you can use <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_feather.html">read_feather</a> and <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_feather.html">to_feather</a> just as easily.</p></li>
+<li><p><strong>Import using defined data types</strong>. Each column of a dataframe has a defined data type (e.g.&nbsp;floating number, string, etc.)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. When importing data, it is good general practice to define the column data types if they are known. This ensures that the columns have the intended data type<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> and are suitable for later processing<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. For large datasets, defining data types during import is particularly important because it avoids the time-consuming <em>parsing</em> operation where the import function tries to determine/guess that correct data type. Most pandas import functions have a dtype argument for that purpose. One additional advantage of binary file formats is that data types are included in the files meta-data saving the need to re-define the types each time the file is read.</p></li>
+<li><p><strong>Process data in chunks where possible</strong>. Often times you can reduce memory requirement and processing times by processing data in chunks. This is possible using the ‘chunksize’ parameter in the case of pandas’ <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv</a> function. To take a simple example, suppose you find the sum of column values in a dataframe that consists of numerical columns. You can limit memory use by reading the dataframe in chunks, summing the values in each chunk, and then adding the subtotals. Processing data in chunks can also reduce processing times because the processing times of many operations grows faster than linear<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. When summarizing loan level data in the Fannie Mae dataset it is generally more efficient to process loan data at the quarterly level first and then concatenate the loans than to combine the quarters first and then process a larger dataset.</p></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-To Do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Include a reference to a comparison between the data types in term of performance.</p>
-</div>
-</div>
-<ol start="2" type="1">
-<li><strong>Import using defined data types</strong>. Each column of a dataframe has a defined data type (e.g.&nbsp;floating number, string, etc.)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. When importing data, it is good general practice to define the column data types if they are known. This ensures that the columns have the intended data type<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> and are suitable for later processing<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. For large datasets, defining data types during import is particularly important because it avoids the time-consuming <em>parsing</em> operation where the import function tries to determine/guess that correct data type. Most pandas import functions have a dtype argument for that purpose. One additional advantage of binary file formats is that data types are included in the files meta-data saving the need to re-define the types each time the file is read.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-To Do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Include link to Fannie Mae’s file layout and glossary.</p>
-</div>
-</div>
-<ol start="3" type="1">
-<li><strong>Process data in chunks where possible</strong>. Often times you can reduce memory requirement and processing times by processing data in chunks. This is possible using the ‘chunksize’ parameter in the case of pandas’ <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">read_csv</a> function. To take a simple example, suppose you find the sum of column values in a dataframe that consists of numerical columns. You can limit memory use by reading the dataframe in chunks, summing the values in each chunk, and then adding the subtotals. Processing data in chunks can also reduce processing times because the processing times of many operations grows faster than linear<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. When summarizing loan level data in the Fannie Mae dataset it is generally more efficient to process loan data at the quarterly level first and then concatenate the loans than to combine the quarters first and then process a larger dataset.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-To Do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Other notes: - Importance of identifying the right level of granularity - Memory imitations of Google Colab - Reading data directly from compressed file format - Functions/code to monitor progress and memory consumption by objects - Test and iterate on small samples first</p>
-</div>
-</div>
 
 
 
@@ -430,6 +423,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./expository_overview.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
