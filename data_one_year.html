@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Case: End-to-End Mortgage Analytics - A One Year Sample</title>
+<title>Case: Mortgage Analytics - A One Year Sample</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data_all_years_sample.html" rel="next">
+<link href="./data_consolidation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    <span class="navbar-title">Case: Mortgage Analytics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,55 +89,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"> </span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./modules_overview.html" rel="" target="">
- <span class="menu-text">Case Modules</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./expository_overview.html" rel="" target="">
- <span class="menu-text">Expository Notes</span></a>
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">More…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
-        <li>
-    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
- <span class="dropdown-text">Student Resources</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./about.html" rel="" target="">
- <span class="dropdown-text">About</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">MSBA…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
-        <li>
-    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
- <span class="dropdown-text">Case</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
- <span class="dropdown-text">Case Modules</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -236,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview">Overview</h3>
-<p>We provide in this section datasets pertaining to the Year 2018. The data is derived from Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. The first dataset consists of all loans appearing in Fannie Mae’s dataset that were acquired during 2018. The second dataset consists of all loans that originated in 2018 (including those acquired later than 2018). The third dataset consists of all 30-year mortgages that orginated in 2018. The data is consolidated into one row per loan as desctibed in the <a href="./data_consolidation.html">Data Consolidation</a> section. Each dataset is provided in a variety of formats.</p>
+<p>In this section, we provide a consolidated dataset pertaining to the Year 2018. The data is derived from Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. We provide several different versions / formats of this dataset. The first version consists of all loans appearing in Fannie Mae’s dataset that were <em>acquired</em> during 2018. The second version consists of all loans that <em>originated</em> in 2018 (including those acquired later than 2018). The version consists of only <em>30-year mortgages</em> that orginated in 2018. The datasets are consolidated into one row per loan as desctibed in the <a href="./data_consolidation.html">Data Consolidation</a> section. Each dataset is provided in a compressed / uncompressed delimited/feather file formats.</p>
 </section>
 <section id="loans-acquired-in-2018" class="level3">
 <h3 class="anchored" data-anchor-id="loans-acquired-in-2018">Loans acquired in 2018</h3>
@@ -244,15 +208,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="download-delimited-.csv-flat-file-delimiter" class="level4">
 <h4 class="anchored" data-anchor-id="download-delimited-.csv-flat-file-delimiter">Download delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~525MB: <a href="https://drive.google.com/file/d/1RTLRtP6s-v6sZVM1gGfmG9TpZG9iqd5s/view?usp=sharing">2018_acquired_consolidated.csv</a></li>
-<li>Compressed ~105MB: <a href="https://drive.google.com/file/d/1RYnNbmqahyAglt2ek0VmAGGOmnTES3ew/view?usp=sharing">2018_acquired_consolidated_csv.zip</a></li>
+<li>Uncompressed (~525MB) filename: &lt;2018_acquired_consolidated.csv&gt;</li>
+<li>Compressed (~105MB) filename: &lt;2018_acquired_consolidated_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="download-feather-.feather-file" class="level4">
 <h4 class="anchored" data-anchor-id="download-feather-.feather-file">Download feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~205MB: <a href="https://drive.google.com/file/d/1RWiR4cNdliCwbKlvHTdVVkpXag6iStGn/view?usp=sharing">2018_acquired_consolidated.feather</a></li>
-<li>Compressed ~115MB: <a href="https://drive.google.com/file/d/1RZ344zwhmg8JKvVMWrfRYUijgAIVefeU/view?usp=sharing">2018_acquired_consolidated_feather.zip</a></li>
+<li>Uncompressed (~205MB) filename: &lt;2018_acquired_consolidated.feather&gt;</li>
+<li>Compressed (~115MB) filename: &lt;2018_acquired_consolidated_feather.zip&gt;</li>
 </ul>
 </section>
 </section>
@@ -262,15 +226,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="download-delimited-.csv-flat-file-delimiter-1" class="level4">
 <h4 class="anchored" data-anchor-id="download-delimited-.csv-flat-file-delimiter-1">Download delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~560MB: <a href="https://drive.google.com/file/d/1SDz7HakFrJb3ghmPim3dhYK1wNHviLvy/view?usp=sharing">2018_originated_consolidated.csv</a></li>
-<li>Compressed ~115MB: <a href="https://drive.google.com/file/d/1SEkD497RIC_l68SBPaIwrfrFWZOCnmQh/view?usp=sharing">2018_originated_consolidated_csv.zip</a></li>
+<li>Uncompressed (~560MB) filename: &lt;2018_originated_consolidated.csv&gt;</li>
+<li>Compressed (~115MB) filename: &lt;2018_originated_consolidated_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="download-feather-.feather-file-1" class="level4">
 <h4 class="anchored" data-anchor-id="download-feather-.feather-file-1">Download feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~270MB: <a href="https://drive.google.com/file/d/1SEN7p3Pxl1HRVoCxulAEAqDwzKvoftCo/view?usp=sharing">2018_originated_consolidated.feather</a></li>
-<li>Compressed ~135MB: <a href="https://drive.google.com/file/d/1SHWALh7SO9CjioQvaFKV8Q1RsHgPO5qi/view?usp=sharing">2018_originated_consolidated_feather.zip</a></li>
+<li>Uncompressed (~270MB) filename: &lt;2018_originated_consolidated.feather&gt;</li>
+<li>Compressed (~135MB) filename: &lt;2018_originated_consolidated_feather.zip&gt;</li>
 </ul>
 </section>
 </section>
@@ -280,15 +244,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="download-delimited-.csv-flat-file-delimiter-2" class="level4">
 <h4 class="anchored" data-anchor-id="download-delimited-.csv-flat-file-delimiter-2">Download delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~485MB: <a href="https://drive.google.com/file/d/1RhqcKEYVefxF7VDwb9eKqdvt_IILJ4fm/view?usp=sharing">2018_originated_30year_consolidated.csv</a></li>
-<li>Compressed ~100MB: <a href="https://drive.google.com/file/d/1RyTMij-F6qZTn7wKD_qAd25ATHtFAJSw/view?usp=sharing">2018_originated_30year_consolidated_csv.zip</a></li>
+<li>Uncompressed (~485MB) filename: &lt;2018_originated_30year_consolidated.csv&gt;</li>
+<li>Compressed (~100MB) filename: &lt;2018_originated_30year_consolidated_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="download-feather-.feather-file-2" class="level4">
 <h4 class="anchored" data-anchor-id="download-feather-.feather-file-2">Download feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~235MB: <a href="https://drive.google.com/file/d/1Rjlpe8VGwlaAcNcVTXKwE4Dc3MP9cc1_/view?usp=sharing">2018_originated_30year_consolidated.feather</a></li>
-<li>Compressed ~115MB: <a href="https://drive.google.com/file/d/1S3HGmkAQp_6tXrw4UgHGB9rK09vvRxur/view?usp=sharing">2018_originated_30year_consolidated_feather.zip</a></li>
+<li>Uncompressed (~235MB) filename: &lt;2018_originated_30year_consolidated.feather&gt;</li>
+<li>Compressed (~115MB) filename: &lt;2018_originated_30year_consolidated_feather.zip&gt;</li>
 </ul>
 
 
@@ -529,6 +493,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_consolidation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Consolidation</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_all_years_sample.html" class="pagination-link">
+        <span class="nav-page-text">A 10% Sample Covering All Years</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

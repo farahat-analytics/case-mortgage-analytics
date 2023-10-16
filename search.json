@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "student_resources.html",
-    "href": "student_resources.html",
-    "title": "Student Resources",
-    "section": "",
-    "text": "Text here and here."
-  },
-  {
     "objectID": "MSBA_modules_overview.html",
     "href": "MSBA_modules_overview.html",
     "title": "Overview",
@@ -49,9 +42,16 @@
     "text": "Learnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes"
   },
   {
+    "objectID": "module_acquisition_summary.html",
+    "href": "module_acquisition_summary.html",
+    "title": "Exploratory Analytics: Exploring Acquisition Characteristics",
+    "section": "",
+    "text": "The main acquisition characteristics considered to in this module are:\n- Original Interest Rate\n- Original UPB\n- Original Loan to Value Ratio (LTV)\n- Borrower Credit Score at Origination\n- Debt-To-Income (DTI) \n- Loan Purpose\n- Property Type\nOther acquisition characteristics, also worth of exploration, include: Original Combined Loan to Value Ratio (CLTV), Co-Borrower Credit Score at Origination, Mortgage Insurance Type, Mortgage Insurance Percentage, Channel, Number of Borrowers, Number of Units, Occupancy Status, First Time Home Buyer Indicator, Relocation Mortgage Indicator, and Special Eligibility Program.\nExamine the questions below using the data sample of 30 year fixed-rate mortgages acquired by Fannie Mae during the period 2000-2014. The\n\nThe sub-prime mortgage crises (2007-2009) was precipitated by a rise in sub-prime mortgage lending in the preceding few years. Explore the dataset to identify any marked changes in mortgage acquisition characteristics before and after the crisis period.\nThe interest rate of 30-year fixed-rate mortgages changes over time according to various economic conditions. The changes have significant implications for home buyers and for the mortgage industry as a whole. One record of historical mortgage interest rates is the The Primary Mortgage Market Survey (PMMS) conducted by Freddie Mac, a government sponsored enterprise similar to Fannie Mae, since 1970. Using annual averages, compare the 30-year fixed-rate interest rates with the average interest rates in the Fannie Mae acquisition dataset. Are there any discrepancies between the two time series?1\nExplain carefully the increase in the number of loans in the period 2000-2003 in terms of changes of interest rates during that period.\nWhich States / Zip Codes had the highest/lowest mortgage interest rates? Which States / Zip Codes had the highest/lowest mortgage principal balances at origination?\nComment on whether the mortgages in the dataset conformed strictly to the Eligibility Matrix."
+  },
+  {
     "objectID": "module_acquisition_summary.html#footnotes",
     "href": "module_acquisition_summary.html#footnotes",
-    "title": "Exploring Acquisition Characteristics",
+    "title": "Exploratory Analytics: Exploring Acquisition Characteristics",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nFreddie Mac has recently decided to base their PMMS on data collected from loan applications submitted to Freddie Mac instead of conducting an actual survey…↩︎"
   },
@@ -147,137 +147,25 @@
     "text": "III. Tools"
   },
   {
-    "objectID": "data_raw.html",
-    "href": "data_raw.html",
-    "title": "Fannie Mae’s Data",
+    "objectID": "data_train_test.html",
+    "href": "data_train_test.html",
+    "title": "A Train / Test Split",
     "section": "",
-    "text": "Fannie Mae publishes granular data representative of a portion of the single-family home mortgages it acquired since year 2000. The data is available on their website here: Fannie Mae Single-Family Loan Performance Data. The types of mortgages included in the dataset, and various exclusions and limitations, are described in items 1 and 2 of this FAQ document.\nThroughout this case, we refer to the July 27, 2023 release1 of the primary2 dataset. This dataset covers approximately 55 million mortgage loans. Monthly performance data is provided for each loan starting from the time of acquisition through to the end of the first quarter of year 2023 or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier. Therefore, each row pertains to a particular loan at a particular month. The full dataset consists of approximately 2.5 billion records (rows) and approximately 65-70 applicable fields (columns)."
+    "text": "Description\nIn this final collection of consolidated-loan datasets, we construct a train / test split as follows. We assume the analyst is training (i.e. fitting) their models on data from up to Year 2014 (the first 15 years of acquisition data) and validating / testing their models on data from Year 2015 onwards. Therefore, we construct a train set by considering the loans in the random sample discussed in Section [data_all_years_sample.ipynb] that were acquired prior to Year 2015. For these loans, however, the consolidation of loan data is done with respect to their histories up to the end of Year 2014 only. That is, we set the values of their dynamic fields to those that existed on December 2014 or when the loan reached zero balance whichever was earlier. This strictly ensures no ‘peeking ahead’ in time. For the test / validation set, we consider the loans in the random sample that were acquired in Year 2015 onward. The test set loans are consolidated using their full histories (that is up to the end of Quarter 1 of Year 2023). These train and test sets are provided in several file formats.\n\n\nTrain set\nThis train dataset consists of 2,244,409 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed (~585MB) filename: &lt;train_sample_consolidated.csv&gt;\nCompressed (~125MB) filename: &lt;train_sample_consolidated_csv.zip&gt;\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed (~285MB) filename: &lt;train_sample_consolidated.feather&gt;\nCompressed (~140MB) filename: &lt;train_sample_consolidated_feather.zip&gt;\n\n\n\n\nTest set\nThis test dataset consists of 1,653,349 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed (~500MB) filename: &lt;test_sample_consolidated.csv&gt;\nCompressed (~100MB) filename: &lt;test_sample_consolidated_csv.zip&gt;\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed (~225MB) filename: &lt;test_sample_consolidated.feather&gt;\nCompressed (~115MB) filename: &lt;test_sample_consolidated_feather.zip&gt;"
   },
   {
-    "objectID": "data_raw.html#footnotes",
-    "href": "data_raw.html#footnotes",
-    "title": "Fannie Mae’s Data",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nFannie Mae updates the dataset quarterly↩︎\nWe ignore the accompanying HARP dataset↩︎\nThis delimiter is useful when some values include commas↩︎\nFannie Mae provides them for compatibility with other dataset disclosures↩︎"
-  },
-  {
-    "objectID": "data_one_year.html",
-    "href": "data_one_year.html",
-    "title": "A One Year Sample",
+    "objectID": "data_overview.html",
+    "href": "data_overview.html",
+    "title": "Overview",
     "section": "",
-    "text": "Overview\nWe provide in this section datasets pertaining to the Year 2018. The data is derived from Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. The first dataset consists of all loans appearing in Fannie Mae’s dataset that were acquired during 2018. The second dataset consists of all loans that originated in 2018 (including those acquired later than 2018). The third dataset consists of all 30-year mortgages that orginated in 2018. The data is consolidated into one row per loan as desctibed in the Data Consolidation section. Each dataset is provided in a variety of formats.\n\n\nLoans acquired in 2018\nThis dataset consists of 1,834,469 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed ~525MB: 2018_acquired_consolidated.csv\nCompressed ~105MB: 2018_acquired_consolidated_csv.zip\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed ~205MB: 2018_acquired_consolidated.feather\nCompressed ~115MB: 2018_acquired_consolidated_feather.zip\n\n\n\n\nLoans originated in 2018\nThis dataset consists of 1,788,020 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed ~560MB: 2018_originated_consolidated.csv\nCompressed ~115MB: 2018_originated_consolidated_csv.zip\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed ~270MB: 2018_originated_consolidated.feather\nCompressed ~135MB: 2018_originated_consolidated_feather.zip\n\n\n\n\n30-year loans originated in 2018\nThis dataset consists of 1,514,613 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed ~485MB: 2018_originated_30year_consolidated.csv\nCompressed ~100MB: 2018_originated_30year_consolidated_csv.zip\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed ~235MB: 2018_originated_30year_consolidated.feather\nCompressed ~115MB: 2018_originated_30year_consolidated_feather.zip"
+    "text": "Extensive data on a portion of the mortgages acquired by Fannie Mae since year 2000 is accssible through Fannie Mae’s Data Dynamics portal. The first subsection below helps you get started with this dataset. The second section highlights the need to consolidate the data, which tracks each loan’s performance each month, into a one row per loan summary. The remaining sections provide samples of such consolidated loan data derived from Fannie Mae’s data.\n\nFannie Mae’s Data\nData Consolidation\nA One Year Sample\nA 10% Sample Covering All Years\nA Train / Test Split\n\nIf you need to work with the most detailed and recent mortgage data or if you wish to gain experience in manipulating large datasets then your best starting point is Fannie Mae’s data portal itself followed by Case Module 0: Data Pre-processing. However, if you wish to by-pass much of the data prep work then you will find that the consolidated data samples we have included here provide convenient on-ramps into your analysis."
   },
   {
-    "objectID": "data_all_years_sample.html",
-    "href": "data_all_years_sample.html",
-    "title": "A 10% Sample Covering All Years",
+    "objectID": "data_consolidation.html",
+    "href": "data_consolidation.html",
+    "title": "Data Consolidation",
     "section": "",
-    "text": "We provide in this section a consolidated dataset comprising a 10% random sample of the 30-year fixed-rate mortgages appearing in Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. For each year, from 2000 to 2022 inclusive1, we consolidate the data into one row per loan as described in the Data Consolidation section, filter out loans whose original loan term did not equal 360 months, and draw a 10% simple random sample of the remaining loans in that year. Sampled loans from all acquisition years are then combined into a single dataset. The dataset consists of 3,897,758 loans. We provide this dataset below in a variety of formats."
-  },
-  {
-    "objectID": "data_all_years_sample.html#footnotes",
-    "href": "data_all_years_sample.html#footnotes",
-    "title": "A 10% Sample Covering All Years",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nwe ignore the first quarter of 2023↩︎"
-  },
-  {
-    "objectID": "case_structure.html#i.-expository-notes",
-    "href": "case_structure.html#i.-expository-notes",
-    "title": "Case Outline",
-    "section": "I. Expository Notes",
-    "text": "I. Expository Notes\n\nNote 1: The Home Mortgage Market Supply Chain in the U.S.\n\n\nNote 2: Recognizing and Overcoming the Challenges of Manipulating Large Datasets\n\n\nNote 3: The Pricing and Execution of Whole Loans by Fannie Mae\n\n\nNote 4: Quantifying the Porfitability of Whole Loans"
-  },
-  {
-    "objectID": "case_structure.html#ii.-case-modules",
-    "href": "case_structure.html#ii.-case-modules",
-    "title": "Case Outline",
-    "section": "II. Case Modules",
-    "text": "II. Case Modules\n\nCase A: Manipulating Modern Business Scale Datasets\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 1\nOther notes\n\n\n\nCase B: Exploratory Data Analysis\n\nLearnig objectives\nMain business question\nCase detailed questions\n\nWhat is your hypothesis about factors predicting “ZBC”\nWhat explains loan volume variations across years (e.g. 2000-2005)\n\nMapping to Ravi’s coure week: 2\nOther notes: Divide into basic; geo; unsupervised\n\n\n\nCase C: Estimate Loan Profit/Loss to-Date\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 2\nOther notes\n\n\n\nCase D1: Classifiy Loan Outcome at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase D2: Classifiy Loan Outcome at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase E1: Predict Loan Profit/Loss at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase E2: Predict Loan Profit/Loss at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase F: Assess Validity of LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase G: Design Your LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase H: Examine Georgaphical Variations\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes\n\n\n\nCase I: Prescriptive Analytics\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes"
-  },
-  {
-    "objectID": "case_structure.html#iii.-resources",
-    "href": "case_structure.html#iii.-resources",
-    "title": "Case Outline",
-    "section": "III. Resources",
-    "text": "III. Resources\n\nResource Collection 1: FNMA Public Resources\n\n\nResource Collection 2: Python Resources"
-  },
-  {
-    "objectID": "case_structure.html#iv.-synthetic-datasets",
-    "href": "case_structure.html#iv.-synthetic-datasets",
-    "title": "Case Outline",
-    "section": "IV. Synthetic Datasets",
-    "text": "IV. Synthetic Datasets"
-  },
-  {
-    "objectID": "case_structure.html#v.-instructor-resources",
-    "href": "case_structure.html#v.-instructor-resources",
-    "title": "Case Outline",
-    "section": "V. Instructor Resources",
-    "text": "V. Instructor Resources"
-  },
-  {
-    "objectID": "case_F.html",
-    "href": "case_F.html",
-    "title": "Case F - Reconcile buying loans at scale",
-    "section": "",
-    "text": "Learning objectives\nExtend insight from previous module to use law of large numbers to buy many loans at scale to derisk them of defaults.\n\n\nMain business question\nFNMA purchases loans from originating banks at different prices based on the loan characteristics using a LLPA matrix. is this pricing accurate?\n\n\nCase detailed questions\n\nAudit the LLPA matrix for a particular cohort of loans (say originating around 2010) for their relative risk profiles.\nVerify if the realized risk is in line with the pricing\nSuggest changes to pricing schemes. Identify opportunities for improving the pricing using special rules based on your own knowledge (such as geographic variation of house prices, employment index and other socio-economic conditions)\n\n\n\nMapping to course\nFinal exercise on oputting together all models about loan repayment into a comprehensive understanding with a succinct price\n\n\nOther notes\n\nEmphasize on finding opportunities to find frictions that local banks can potentially remove"
-  },
-  {
-    "objectID": "case_D.html",
-    "href": "case_D.html",
-    "title": "Case D - Regression: Predict Net Returns on a Loan or Loss Given Default at origination",
-    "section": "",
-    "text": "Learning objectives\nUse regression models to predict net profit/loss from loans.\n\n\nMain business question\nCan we directly determine the profitability of taking on a loan in dollar terms at origination time?\n\n\nCase detailed questions\n\nDefine the LGD (loss given default): for loans that defaulted, the fraction of the total principle that was unpaid.\nRun regression models with feature selection (say using L1, L2, Elastic Net, Regression Trees, Random Forests…) to predict loss given default at loan origination\nRe-run similar models to predict net returns from a loan using features at loan origination\nWhy might such models not be very robust?\n\n\n\nMapping to course\nFourth exercise on regression models\n\n\nOther notes\n\nAdd prepayment into the net return calculation of the loan (which also reduces the net return like losses do but less severely)"
-  },
-  {
-    "objectID": "case_B.html",
-    "href": "case_B.html",
-    "title": "Case B - Descriptive Analysis",
-    "section": "",
-    "text": "Learning objectives\nIdentify useful patterns among the features and the data points and relate it to business concerns.\n\n\nMain business question\nHow can you find systematic patterns in the data?\n\n\nCase detailed questions\n\nPerform an unsupervised analysis of loans using K-Means Clustering and see if your clusters correspond to risk classes\nPerform PCA to find correlated clusters of features\n\n\n\nMapping to course\nSecond exercise on descriptive analysis.\n\n\nOther notes\n\nName and explain KMeans clusters using parallel line plots\nExplain PC components using loadings and extremal points\nVary the number of clusters in KMeans and arrive at an ‘optimal’ number\nMaybe use sparse PCA"
-  },
-  {
-    "objectID": "case_A.html",
-    "href": "case_A.html",
-    "title": "Case A - Business Understanding: Exploratory Data Analysis",
-    "section": "",
-    "text": "Learning objectives\nDefine the business problem using specific metrics and targets, paying attention to all stakeholders.\n\n\nMain business question\nWhat key insights about 30-year mortgage loan repayments can you glean from the historical record? How can you summarize the data best?\n\n\nCase detailed questions\n\nOut of all the features available, what are the top 10/20/30 that you would retain for further analysis of loan repayment patterns?\nWhat are your top three hypotheses about factors predicting “ZBC”?\nWhat explains loan volume variations across years (e.g. 2000-2005)?\nCreate summary tables and verify their validity against those published by FNMA\n\n\n\nMapping to course\nFirst exercise on data and business understanding.\n\n\nOther notes\n\nAugment with geographic variation (assign different regions to different teams)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Authors\nR. Ravi and Amr Farahat\n\n\nLicense\nThis case is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International license\n\n\nVersion\nVersion: 0.0.1\nDate: 2023-06-30\n\n\nHistory\nThis case was first developed by Professor R. Ravi in 2019 for the course 46-889 titled Business Value through Integrative Analytics, in the Master of Science in Business Analytics program at the Tepper School of Business, Carnegie Mellon University.\n\n\nAcknowledgements\nRavi is grateful to Charles Burke and Lee Cammerer at the Federal Home Loan Bank of Dallas for their insights and Kalyan Madhavan at the Federal Home Loan Bank of Dallas for his advice in developing this case."
-  },
-  {
-    "objectID": "case_A0.html",
-    "href": "case_A0.html",
-    "title": "Case A0 - Data Understanding: Manipulating Modern Business Scale Datasets",
-    "section": "",
-    "text": "Learning objective\nUnderstand the complexity and integrity of large data systems and learn how to work with them.\n\n\nMain questions\nIdentify source of relevant data for the problem, procure it and clean it in preparation for future analysis. While an ‘engineering’ task, it is becoming necessary as part of a skill set for business analysts.\n\n\nDetailed questions\n\nDownload Data\nAdapt given scripts to consolidate multiple records per loan into one\nDevise methods to tackle missing or incomplete data\n\n\n\nMapping to course\nOptional data preparation module when time permits.\n\n\nOther notes\n\nNeed links to technical notes on data extraction with low memory usage and other issues related to memory and computing."
-  },
-  {
-    "objectID": "case_C.html",
-    "href": "case_C.html",
-    "title": "Case C - Classification: Predict loan default at origination",
-    "section": "",
-    "text": "Learning objectives\nApply classification model to predict loan default; Define default carefully.\n\n\nMain business question\nCan the default risk of a loan application be learned from the loan application features?\n\n\nCase detailed questions\n\nDefine carefully when a loan defaults (e.g. reaches default status within the first N years of its origination)\nRun a simple logistic regression model for predicting if a loan will default\nRun tree models for the same task\nCompare the models for their benefits and shortcomings\n\n\n\nMapping to course\nThird exercise on classification models\n\n\nOther notes\n\nDefine default as defaulting in the first 3 years, or as defaulting in the next 3 years (moving ahead to year 5 of the loan). Show that the prediction models are different - why is this the case? Explain automatic censoring of data with prepaid and defaulted loans in the cohort. Motivate survival models.\nDefine prepayment and use the same methods to predict prepayment ‘risk’. How can this be useful for mortgage financing? What will it depend upon? (Interest rates)"
-  },
-  {
-    "objectID": "case_E.html",
-    "href": "case_E.html",
-    "title": "Case E - Prescription: Pricing default risk",
-    "section": "",
-    "text": "Learning objectives\nUse optimization models to determine at what price a risky loan may be purchased at origination in return for its uncertain stream of cash repayments.\n\n\nMain business question\nGiven all the loan features at origination, how much would you accept as sufficient reward for taking over the loan?\n\n\nCase detailed questions\n\nWhat model would you use to determine a price for the default risk of a loan?\nDo prepayments help you or hurt you in assuming this risk?\nWhat key features of the loan at origination will you identify to price the loan differentially? How will you deteremine these features?\n\n\n\nMapping to course\nFifth exercise on simple optimization models.\n\n\nOther notes\n\nThis is really a more detailed version of the previous two exercises on predicting default and the losses from it. The top features detereming these two (such as LTV ratio and FICO score of borrower) will determine the risk of buying the loan.\nBest to guide students to deteremine these factors and how to differentially increase the price as the values of these factors worsen."
-  },
-  {
-    "objectID": "case_G.html",
-    "href": "case_G.html",
-    "title": "Case G - Communicating Analytics",
-    "section": "",
-    "text": "Learning objectives\nCommunicate complex analytical ideas with clean messages and graphics.\n\n\nMain business question\nPick one of the previous 5 modules (exclude initial business/data undersatnding) and present it in an effective way.\n\n\nCase detailed questions\n\nWhat is the main message/insight from your presentation?\nWhat do you expect the presentation will lead the audience to do?\nHave you flagged potential shortcomings and models assumptions that may derail your recommendations?\n\n\n\nMapping to course\nLast week on communicating analytics.\n\n\nOther notes\n\nUse rubrics and learnings from communications courses to evaluate\nEmphasize delivery, careful use of text, graphics, color, chart"
+    "text": "Why Consolidate?\nFor the most part, the questions addressed in this case do not require a detailed examination of the monthly time-series of each loan. It sufficies to work with a consolidated dataset, consisting of one row per loan, with fields capturing only the acquisition characteristics and the final or current status of each loan. This consolidation requires some initial pre-processing of the raw data and entails the loss of some detail, but it has the advantage of vastly reducing the size (number of rows) of the datasets required for analysis.\n\n\nHow to Consolidate Mortgage Level Data\nFannie Mae refers to this loan consolidation process in their Loan Performance Data Tutorial and provides, a perhaps somewhat outdated, R Code (Primary dataset) to consolidate the data.\nIt is instructive for students with sufficient time and computing resources to write their own code to consolidate the mortgage loans. We recommend Python, especially the aggregation functionality of pandas. The process is conceptually simple: For each loan, extract the earliest available data for static fields and the latest available data for dynamic fields. See this section for a definition of the static and dynamic fields. Alternatively, we provide samples of consolidated datasts in the next sections."
   },
   {
     "objectID": "case_v0.html",
@@ -315,25 +203,172 @@
     "text": "Footnotes\n\n\nThis case was developed by Professor R. Ravi in 2019 for the course 46-889 titled Business Value through Integrative Analytics, in the Master of Science in Business Analytics program at the Tepper School of Business, Carnegie Mellon University. Ravi is grateful to Charles Burke and Lee Cammerer at the Federal Home Loan Bank of Dallas for their insights and Kalyan Madhavan at the Federal Home Loan Bank of Dallas for his advice in developing this case.↩︎\nThese initial investments are not unlike deductibles paid in insurance policies to avoid the moral hazard problem; If the borrower lacks sufficient funds to fulffill this requirement, she may take out mortgage insurance for the remaining value that will pay out the some part of the value of the property in case of default.↩︎\nThe MBS’s are then further sold via auction to real-estate arms of large financial firms via a BWIC (“bee-wick”) process (bids wanted in competition) that specifies the characteristics of the bundle for sale along with a deadline for bidding.↩︎\nThe ADMC originated in the financial crisis of 2008 and was eliminated and incorporated into the basic rates around 2015.↩︎\nThe R and SAS files provided with the tutorials are slightly outdated in that they process data that was published around 2015. The data has been enhanced since to add three additional fields to both the acquisition and performance files, so you will need to modify them slightly to read in the enriched data.↩︎\nDo not worry about the time discounting of these losses for now. This time value adjustment will nearly vanish if the prices charged by Fannie are themselves invested at the risk-free rate or better which is the case.↩︎"
   },
   {
-    "objectID": "data_consolidation.html",
-    "href": "data_consolidation.html",
-    "title": "Data Consolidation",
+    "objectID": "case_G.html",
+    "href": "case_G.html",
+    "title": "Case G - Communicating Analytics",
     "section": "",
-    "text": "Why Consolidate?\nFor the most part, the questions addressed in this case do not require a detailed examination of the monthly time-series of each loan. It sufficies to work with a consolidated dataset, consisting of one row per loan, with fields capturing only the acquisition characteristics and the final or current status of each loan. This consolidation requires some initial pre-processing of the raw data and entails the loss of some detail, but it has the advantage of vastly reducing the size (number of rows) of the datasets required for analysis.\n\n\nHow to Consolidate Mortgage Level Data\nFannie Mae refers to this loan consolidation process in their Loan Performance Data Tutorial and provides, a perhaps somewhat outdated, R Code (Primary dataset) to consolidate the data.\nIt is instructive for students with sufficient time and computing resources to write their own code to consolidate the mortgage loans. We recommend Python, especially the aggregation functionality of pandas. The process is conceptually simple: For each loan, extract the earliest available data for static fields and the lastest available data for dynamic fields. See this section for a definition of the static and dynamic fields. Alternatively, we provide samples of consolidated datasts in the next sections."
+    "text": "Learning objectives\nCommunicate complex analytical ideas with clean messages and graphics.\n\n\nMain business question\nPick one of the previous 5 modules (exclude initial business/data undersatnding) and present it in an effective way.\n\n\nCase detailed questions\n\nWhat is the main message/insight from your presentation?\nWhat do you expect the presentation will lead the audience to do?\nHave you flagged potential shortcomings and models assumptions that may derail your recommendations?\n\n\n\nMapping to course\nLast week on communicating analytics.\n\n\nOther notes\n\nUse rubrics and learnings from communications courses to evaluate\nEmphasize delivery, careful use of text, graphics, color, chart"
   },
   {
-    "objectID": "data_overview.html",
-    "href": "data_overview.html",
-    "title": "Overview",
+    "objectID": "case_E.html",
+    "href": "case_E.html",
+    "title": "Case E - Prescription: Pricing default risk",
     "section": "",
-    "text": "Extensive data on a portion of mortgages acquired by Fannie Mae is accssible through Fannie Mae’s Data Dynamics portal. The first section below helps you get started with this dataset. The second section highlights the need to consolidate the data into one row per loan. The remaining sections provide samples of such consolidated loan data derived from Fannie Mae’s data.\n\nFannie Mae’s Data\nData Consolidation\nA One Year Sample\nA 10% Sample Covering All Years\nA Train / Test Split\n\nIf you need to work with the most detailed and recent mortgage data or if you wish to gain experience in manipulating large datasets then your best starting point is Fannie Mae’s data portal. If you wish to by-pass much of the data prep work then you will find that the consolidated data samples we have included here provide convenient on-ramps into your analysis.\n\n\n\n\n\n\nTo Do\n\n\n\nNeed to check Fannie Mae’s Terms and Conditions and/or obtain permission from Fannie Mae before posting consolidated loan data.\n“For more information regarding external commercial use or redistribution of this data, please contact Fannie Mae’s Fixed-Income Marketing at 800-2FANNIE (800-232-6643) or by email.”"
+    "text": "Learning objectives\nUse optimization models to determine at what price a risky loan may be purchased at origination in return for its uncertain stream of cash repayments.\n\n\nMain business question\nGiven all the loan features at origination, how much would you accept as sufficient reward for taking over the loan?\n\n\nCase detailed questions\n\nWhat model would you use to determine a price for the default risk of a loan?\nDo prepayments help you or hurt you in assuming this risk?\nWhat key features of the loan at origination will you identify to price the loan differentially? How will you deteremine these features?\n\n\n\nMapping to course\nFifth exercise on simple optimization models.\n\n\nOther notes\n\nThis is really a more detailed version of the previous two exercises on predicting default and the losses from it. The top features detereming these two (such as LTV ratio and FICO score of borrower) will determine the risk of buying the loan.\nBest to guide students to deteremine these factors and how to differentially increase the price as the values of these factors worsen."
   },
   {
-    "objectID": "data_train_test.html",
-    "href": "data_train_test.html",
-    "title": "A Train / Test Split",
+    "objectID": "case_C.html",
+    "href": "case_C.html",
+    "title": "Case C - Classification: Predict loan default at origination",
     "section": "",
-    "text": "Description\nWe construct a train / test split of consolidated loan data as follows. We assume the analysts are training (i.e. fitting) their models on data from up to Year 2014 (the first 15 years of acquisition data) and validating / testing their models on data from Year 2015 onwards. Therefore, we construct a train set by considering the loans in the random sample discussed in Section [data_all_years_sample.ipynb] that were acquired prior to Year 2015. For these loans, however, the consolidation of loan data is done with respect to their histories up to the end of Year 2014 only. That is, we set the values of their dynamic fields to those that existed on December 2014 or when the loan reached zero balance whichever was earlier. This strictly ensures no ‘peeking ahead’ in time. For the test / validation set, we consider the loans in the random sample that were acquired in Year 2015 onward. The test set loans are consolidated using their full histories (that is up to the end of Quarter 1 of Year 2023). These train and test sets are provided below in a variety of formats.\n\n\n\n\n\n\nTo Do\n\n\n\nDiscuss whether we need to an explcit split into validation and test sets. For example, loans acquired 2015-2019 would be designated for validation and 2020-2022 would be used for test (with the pandemic wrinkle deliberately thrown in there.) Or, we can just assume cross-validation is utilized.\n\n\n\n\nTrain set\nThis train dataset consists of 2,244,409 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed ~585MB: train_sample_consolidated.csv\nCompressed ~125MB: train_sample_consolidated_csv.zip\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed ~285MB: train_sample_consolidated.feather\nCompressed ~140MB: train_sample_consolidated_feather.zip\n\n\n\n\nTest set\nThis test dataset consists of 1,653,349 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed ~500MB: test_sample_consolidated.csv\nCompressed ~100MB: test_sample_consolidated_csv.zip\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed ~225: test_sample_consolidated.feather\nCompressed ~115: test_sample_consolidated_feather.zip"
+    "text": "Learning objectives\nApply classification model to predict loan default; Define default carefully.\n\n\nMain business question\nCan the default risk of a loan application be learned from the loan application features?\n\n\nCase detailed questions\n\nDefine carefully when a loan defaults (e.g. reaches default status within the first N years of its origination)\nRun a simple logistic regression model for predicting if a loan will default\nRun tree models for the same task\nCompare the models for their benefits and shortcomings\n\n\n\nMapping to course\nThird exercise on classification models\n\n\nOther notes\n\nDefine default as defaulting in the first 3 years, or as defaulting in the next 3 years (moving ahead to year 5 of the loan). Show that the prediction models are different - why is this the case? Explain automatic censoring of data with prepaid and defaulted loans in the cohort. Motivate survival models.\nDefine prepayment and use the same methods to predict prepayment ‘risk’. How can this be useful for mortgage financing? What will it depend upon? (Interest rates)"
+  },
+  {
+    "objectID": "case_A0.html",
+    "href": "case_A0.html",
+    "title": "Case A0 - Data Understanding: Manipulating Modern Business Scale Datasets",
+    "section": "",
+    "text": "Learning objective\nUnderstand the complexity and integrity of large data systems and learn how to work with them.\n\n\nMain questions\nIdentify source of relevant data for the problem, procure it and clean it in preparation for future analysis. While an ‘engineering’ task, it is becoming necessary as part of a skill set for business analysts.\n\n\nDetailed questions\n\nDownload Data\nAdapt given scripts to consolidate multiple records per loan into one\nDevise methods to tackle missing or incomplete data\n\n\n\nMapping to course\nOptional data preparation module when time permits.\n\n\nOther notes\n\nNeed links to technical notes on data extraction with low memory usage and other issues related to memory and computing."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Authors\nR. Ravi and Amr Farahat\n\n\nLicense\nThis case is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International license\n\n\nVersion\nVersion: 0.0.2\nDate: 2023-10-16\n\n\nHistory\nThis case was first developed by Professor R. Ravi in 2019 for the course 46-889 titled Business Value through Integrative Analytics, in the Master of Science in Business Analytics program at the Tepper School of Business, Carnegie Mellon University.\n\n\nAcknowledgements\nRavi is grateful to Charles Burke and Lee Cammerer at the Federal Home Loan Bank of Dallas for their insights and Kalyan Madhavan at the Federal Home Loan Bank of Dallas for his advice in developing this case."
+  },
+  {
+    "objectID": "case_A.html",
+    "href": "case_A.html",
+    "title": "Case A - Business Understanding: Exploratory Data Analysis",
+    "section": "",
+    "text": "Learning objectives\nDefine the business problem using specific metrics and targets, paying attention to all stakeholders.\n\n\nMain business question\nWhat key insights about 30-year mortgage loan repayments can you glean from the historical record? How can you summarize the data best?\n\n\nCase detailed questions\n\nOut of all the features available, what are the top 10/20/30 that you would retain for further analysis of loan repayment patterns?\nWhat are your top three hypotheses about factors predicting “ZBC”?\nWhat explains loan volume variations across years (e.g. 2000-2005)?\nCreate summary tables and verify their validity against those published by FNMA\n\n\n\nMapping to course\nFirst exercise on data and business understanding.\n\n\nOther notes\n\nAugment with geographic variation (assign different regions to different teams)"
+  },
+  {
+    "objectID": "case_B.html",
+    "href": "case_B.html",
+    "title": "Case B - Descriptive Analysis",
+    "section": "",
+    "text": "Learning objectives\nIdentify useful patterns among the features and the data points and relate it to business concerns.\n\n\nMain business question\nHow can you find systematic patterns in the data?\n\n\nCase detailed questions\n\nPerform an unsupervised analysis of loans using K-Means Clustering and see if your clusters correspond to risk classes\nPerform PCA to find correlated clusters of features\n\n\n\nMapping to course\nSecond exercise on descriptive analysis.\n\n\nOther notes\n\nName and explain KMeans clusters using parallel line plots\nExplain PC components using loadings and extremal points\nVary the number of clusters in KMeans and arrive at an ‘optimal’ number\nMaybe use sparse PCA"
+  },
+  {
+    "objectID": "case_D.html",
+    "href": "case_D.html",
+    "title": "Case D - Regression: Predict Net Returns on a Loan or Loss Given Default at origination",
+    "section": "",
+    "text": "Learning objectives\nUse regression models to predict net profit/loss from loans.\n\n\nMain business question\nCan we directly determine the profitability of taking on a loan in dollar terms at origination time?\n\n\nCase detailed questions\n\nDefine the LGD (loss given default): for loans that defaulted, the fraction of the total principle that was unpaid.\nRun regression models with feature selection (say using L1, L2, Elastic Net, Regression Trees, Random Forests…) to predict loss given default at loan origination\nRe-run similar models to predict net returns from a loan using features at loan origination\nWhy might such models not be very robust?\n\n\n\nMapping to course\nFourth exercise on regression models\n\n\nOther notes\n\nAdd prepayment into the net return calculation of the loan (which also reduces the net return like losses do but less severely)"
+  },
+  {
+    "objectID": "case_F.html",
+    "href": "case_F.html",
+    "title": "Case F - Reconcile buying loans at scale",
+    "section": "",
+    "text": "Learning objectives\nExtend insight from previous module to use law of large numbers to buy many loans at scale to derisk them of defaults.\n\n\nMain business question\nFNMA purchases loans from originating banks at different prices based on the loan characteristics using a LLPA matrix. is this pricing accurate?\n\n\nCase detailed questions\n\nAudit the LLPA matrix for a particular cohort of loans (say originating around 2010) for their relative risk profiles.\nVerify if the realized risk is in line with the pricing\nSuggest changes to pricing schemes. Identify opportunities for improving the pricing using special rules based on your own knowledge (such as geographic variation of house prices, employment index and other socio-economic conditions)\n\n\n\nMapping to course\nFinal exercise on oputting together all models about loan repayment into a comprehensive understanding with a succinct price\n\n\nOther notes\n\nEmphasize on finding opportunities to find frictions that local banks can potentially remove"
+  },
+  {
+    "objectID": "case_structure.html#i.-expository-notes",
+    "href": "case_structure.html#i.-expository-notes",
+    "title": "Case Outline",
+    "section": "I. Expository Notes",
+    "text": "I. Expository Notes\n\nNote 1: The Home Mortgage Market Supply Chain in the U.S.\n\n\nNote 2: Recognizing and Overcoming the Challenges of Manipulating Large Datasets\n\n\nNote 3: The Pricing and Execution of Whole Loans by Fannie Mae\n\n\nNote 4: Quantifying the Porfitability of Whole Loans"
+  },
+  {
+    "objectID": "case_structure.html#ii.-case-modules",
+    "href": "case_structure.html#ii.-case-modules",
+    "title": "Case Outline",
+    "section": "II. Case Modules",
+    "text": "II. Case Modules\n\nCase A: Manipulating Modern Business Scale Datasets\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 1\nOther notes\n\n\n\nCase B: Exploratory Data Analysis\n\nLearnig objectives\nMain business question\nCase detailed questions\n\nWhat is your hypothesis about factors predicting “ZBC”\nWhat explains loan volume variations across years (e.g. 2000-2005)\n\nMapping to Ravi’s coure week: 2\nOther notes: Divide into basic; geo; unsupervised\n\n\n\nCase C: Estimate Loan Profit/Loss to-Date\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 2\nOther notes\n\n\n\nCase D1: Classifiy Loan Outcome at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase D2: Classifiy Loan Outcome at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase E1: Predict Loan Profit/Loss at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase E2: Predict Loan Profit/Loss at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase F: Assess Validity of LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase G: Design Your LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase H: Examine Georgaphical Variations\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes\n\n\n\nCase I: Prescriptive Analytics\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes"
+  },
+  {
+    "objectID": "case_structure.html#iii.-resources",
+    "href": "case_structure.html#iii.-resources",
+    "title": "Case Outline",
+    "section": "III. Resources",
+    "text": "III. Resources\n\nResource Collection 1: FNMA Public Resources\n\n\nResource Collection 2: Python Resources"
+  },
+  {
+    "objectID": "case_structure.html#iv.-synthetic-datasets",
+    "href": "case_structure.html#iv.-synthetic-datasets",
+    "title": "Case Outline",
+    "section": "IV. Synthetic Datasets",
+    "text": "IV. Synthetic Datasets"
+  },
+  {
+    "objectID": "case_structure.html#v.-instructor-resources",
+    "href": "case_structure.html#v.-instructor-resources",
+    "title": "Case Outline",
+    "section": "V. Instructor Resources",
+    "text": "V. Instructor Resources"
+  },
+  {
+    "objectID": "data_all_years_sample.html",
+    "href": "data_all_years_sample.html",
+    "title": "A 10% Sample Covering All Years",
+    "section": "",
+    "text": "We provide in this section a consolidated dataset comprising a 10% random sample of the 30-year fixed-rate mortgages appearing in Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. For each year, from 2000 to 2022 inclusive1, we consolidate the data into one row per loan as described in the Data Consolidation section, filter out loans whose original loan term did not equal 360 months, and draw a 10% simple random sample of the remaining loans in that year. Sampled loans from all acquisition years are then combined into a single dataset. The dataset consists of 3,897,758 loans. We provide this dataset in several file formats."
+  },
+  {
+    "objectID": "data_all_years_sample.html#footnotes",
+    "href": "data_all_years_sample.html#footnotes",
+    "title": "A 10% Sample Covering All Years",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nwe ignore the first quarter of 2023↩︎"
+  },
+  {
+    "objectID": "data_one_year.html",
+    "href": "data_one_year.html",
+    "title": "A One Year Sample",
+    "section": "",
+    "text": "Overview\nIn this section, we provide a consolidated dataset pertaining to the Year 2018. The data is derived from Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. We provide several different versions / formats of this dataset. The first version consists of all loans appearing in Fannie Mae’s dataset that were acquired during 2018. The second version consists of all loans that originated in 2018 (including those acquired later than 2018). The version consists of only 30-year mortgages that orginated in 2018. The datasets are consolidated into one row per loan as desctibed in the Data Consolidation section. Each dataset is provided in a compressed / uncompressed delimited/feather file formats.\n\n\nLoans acquired in 2018\nThis dataset consists of 1,834,469 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed (~525MB) filename: &lt;2018_acquired_consolidated.csv&gt;\nCompressed (~105MB) filename: &lt;2018_acquired_consolidated_csv.zip&gt;\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed (~205MB) filename: &lt;2018_acquired_consolidated.feather&gt;\nCompressed (~115MB) filename: &lt;2018_acquired_consolidated_feather.zip&gt;\n\n\n\n\nLoans originated in 2018\nThis dataset consists of 1,788,020 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed (~560MB) filename: &lt;2018_originated_consolidated.csv&gt;\nCompressed (~115MB) filename: &lt;2018_originated_consolidated_csv.zip&gt;\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed (~270MB) filename: &lt;2018_originated_consolidated.feather&gt;\nCompressed (~135MB) filename: &lt;2018_originated_consolidated_feather.zip&gt;\n\n\n\n\n30-year loans originated in 2018\nThis dataset consists of 1,514,613 loans.\n\nDownload delimited &lt;.csv&gt; flat file (delimiter: “|”)\n\nUncompressed (~485MB) filename: &lt;2018_originated_30year_consolidated.csv&gt;\nCompressed (~100MB) filename: &lt;2018_originated_30year_consolidated_csv.zip&gt;\n\n\n\nDownload feather &lt;.feather&gt; file\n\nUncompressed (~235MB) filename: &lt;2018_originated_30year_consolidated.feather&gt;\nCompressed (~115MB) filename: &lt;2018_originated_30year_consolidated_feather.zip&gt;"
+  },
+  {
+    "objectID": "data_raw.html",
+    "href": "data_raw.html",
+    "title": "Fannie Mae’s Data",
+    "section": "",
+    "text": "Fannie Mae publishes granular data representative of a portion of the single-family home mortgages it acquired since year 2000. The data is available on their website here: Fannie Mae Single-Family Loan Performance Data. The types of mortgages included in the dataset, and various exclusions and limitations, are described in items 1 and 2 of this FAQ document.\nThroughout this case, we refer to the July 27, 2023 release1 of the primary2 dataset. This dataset covers approximately 55 million mortgage loans. Monthly performance data is provided for each loan starting from the time of acquisition through to the end of the first quarter of year 2023 or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier. Therefore, each record (row) of this dataset is a snapshot of a particular loan at a particular month. The full dataset consists of approximately 2.5 billion records (rows) and approximately 65-70 applicable attributes (columns)."
+  },
+  {
+    "objectID": "data_raw.html#footnotes",
+    "href": "data_raw.html#footnotes",
+    "title": "Fannie Mae’s Data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nFannie Mae updates the dataset quarterly↩︎\nWe ignore the accompanying HARP dataset↩︎\nThe “|” delimiter is preferable when some values include commas↩︎\nFannie Mae provides them for compatibility with other dataset disclosures↩︎"
+  },
+  {
+    "objectID": "draft_outline.html#i.-expository-notes",
+    "href": "draft_outline.html#i.-expository-notes",
+    "title": "Case Outline",
+    "section": "I. Expository Notes",
+    "text": "I. Expository Notes\n\nNote 1: The Home Mortgage Market Supply Chain in the U.S.\n\n\nNote 2: Recognizing and Overcoming the Challenges of Manipulating Large Datasets\n\n\nNote 3: The Pricing and Execution of Whole Loans by Fannie Mae\n\n\nNote 4: Quantifying the Porfitability of Whole Loans"
+  },
+  {
+    "objectID": "draft_outline.html#ii.-case-modules",
+    "href": "draft_outline.html#ii.-case-modules",
+    "title": "Case Outline",
+    "section": "II. Case Modules",
+    "text": "II. Case Modules\n\nCase A: Manipulating Modern Business Scale Datasets\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 1\nOther notes\n\n\n\nCase B: Exploratory Data Analysis\n\nLearnig objectives\nMain business question\nCase detailed questions\n\nWhat is your hypothesis about factors predicting “ZBC”\nWhat explains loan volume variations across years (e.g. 2000-2005)\n\nMapping to Ravi’s coure week: 2\nOther notes: Divide into basic; geo; unsupervised\n\n\n\nCase C: Estimate Loan Profit/Loss to-Date\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 2\nOther notes\n\n\n\nCase D1: Classifiy Loan Outcome at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase D2: Classifiy Loan Outcome at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase E1: Predict Loan Profit/Loss at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase E2: Predict Loan Profit/Loss at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase F: Assess Validity of LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase G: Design Your LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase H: Examine Georgaphical Variations\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes\n\n\n\nCase I: Prescriptive Analytics\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes"
+  },
+  {
+    "objectID": "draft_outline.html#iii.-resources",
+    "href": "draft_outline.html#iii.-resources",
+    "title": "Case Outline",
+    "section": "III. Resources",
+    "text": "III. Resources\n\nResource Collection 1: FNMA Public Resources\n\n\nResource Collection 2: Python Resources"
+  },
+  {
+    "objectID": "draft_outline.html#iv.-synthetic-datasets",
+    "href": "draft_outline.html#iv.-synthetic-datasets",
+    "title": "Case Outline",
+    "section": "IV. Synthetic Datasets",
+    "text": "IV. Synthetic Datasets"
+  },
+  {
+    "objectID": "draft_outline.html#v.-instructor-resources",
+    "href": "draft_outline.html#v.-instructor-resources",
+    "title": "Case Outline",
+    "section": "V. Instructor Resources",
+    "text": "V. Instructor Resources"
   },
   {
     "objectID": "expository_mortgages.html",
@@ -361,21 +396,21 @@
     "href": "expository_overview.html",
     "title": "Overview",
     "section": "",
-    "text": "Overview here."
+    "text": "Overview here.\nOther resources here."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Welcome!\nThe case is intended for teaching purposes only and does not serve as endorsement of investment or management approaches."
+    "text": "This case is intended to provide Business Analytics Masters students with a real-life, real-data, setting to implement the various stages of the Analytics Value Chain: Expoloratory, Predictive, and (coming soon), Prescriptive. The dataset offers the hallmarks and challenges of handling large data with various practically important but subtle considerations.\nThe case format is novel. It’s an online site which allows dynamic modifications. An evolving set of Exploratory notes provide background information (domain and methodology) and help guide students in their analysis. We believe the format better reflects the experiences of data scientists and business analytsts is practice. The are confronted by a semistructured patchwork of data, are asked to assume responsibility for various deliverables, and jave access to only a patchwork of problem context and background information.\n\n\n\n\n\n\nNote\n\n\n\nThis case site is under construction. Content is evolving! Users are encouraged to contact the authors for feedback and suggestions!\n\n\nPlease note the this case is intended for teaching purposes only and does not serve as endorsement of investment or management approaches.\nBest wishes,\nA. Farahat and R. Ravi"
   },
   {
     "objectID": "modules_overview.html",
     "href": "modules_overview.html",
     "title": "Overview",
     "section": "",
-    "text": "Text here and here."
+    "text": "See sidebar for various case modules."
   },
   {
     "objectID": "module_cohort_outcome_origination.html",
@@ -387,7 +422,7 @@
   {
     "objectID": "module_data_prep.html",
     "href": "module_data_prep.html",
-    "title": "Loan-Level Consolidation",
+    "title": "Data Pre-Processing: Loan-Level Consolidation",
     "section": "",
     "text": "Task outline\n\nDownload from Fannie Mae’s Data Dynamics portal the single-family historical loan performance datasets corresponding to loans acquired in the most recent years (say 2018-2022). For more extensive analysis, download all the datasets starting year 2000. (Warning: The datasets are large). We recommend you first examine the Loan Performance Data Tutorial, the Sample File, and CRT Glossary and File Layout all available here.\nFilter the data to consider only on 30 year mortgages (the data already excludes adjustable rate and other less common mortgage types)\nIdentify the static fields (those related to acquisition characteristics and unlikley to change my reporting period), the dynamic fileds (those likely to change by reporting period), and non-applicable fields that do not apply to fixed-rate mortgages.\nConsolidate (aggregate) the data by Loan Identifier to create a single record per loan. In particular, extract the the first (available) data for static fields and the last available data for dynamic fields for each loan. Drop all non-applicable fields.\nSave the consolidated files by acquisition year.\nThe year Fannie Mae acquired a loan may differ from the year the loan originated. For our purposes, it is more meaningful to conduct analysis by loan vintage (origination year). Therefore, you nneed to re-read the files saved in Step 5, split and re-combine them by acquisition year, and save the resuting files."
   },
@@ -401,9 +436,9 @@
   {
     "objectID": "module_loan_outcome_origination.html",
     "href": "module_loan_outcome_origination.html",
-    "title": "Predicting Loan Outcomes Based on Origination Characteristics",
+    "title": "Predictive Analytics: Predicting Loan Outcomes Based on Origination Characteristics",
     "section": "",
-    "text": "Main business question\nMortgage borrowers have the option of early prepayment (inducing interest rate risk for lenders) and the option of default (inducing credit risk for lenders). Therefore, lenders, financial institutions, and investors seek high quaity data analysis that can help them predict the probabilities of the loan outcomes. Understanding the drivers and magnitudes of these risks helps lenders and investors determine criteria for conforming loans, price these loans to reflect their inherest risks, and to accurately value mortgage-backed securities.\n\n\nLearning objectives\n\nApplying state-of-the-art classification models to multi-dimensional datasets\nRecognize and undertstand how to deal with class imbalances\nRecognize and understand how to deal with censored data\n\n\n\nTask outline\n\nPrepare your dataset:\n\nImport all the loans in the 10% data sample provided here. Recall that the sample consists of 30-year fixed-rate loans only.\nFilter the data further to consider only loans with the following attributes:\n\nOrigination year: 2000\nLoan Purpose: “P” (Purchase)\nOccupancy Status: “P” (Primary)\nNumber of Units: 1\n\nDefine a new target variable column named “ZBC_status” and compute it as follows:\n\nSet “ZBC_status” to “Prepaid” if “Zero Balance Code” equals “01”;\nSet “ZBC_status” to “Defaulted” if “Zero Balance Code” equals “02”, “03”, “09”, or “15”;\nSet “ZBC_status” to “Other” if “Zero Balance Code” equals “06”, “16”, “96”;\nSet “ZBC_status” to “Current”, otherwise.\n\nCreate a random train / test split of the dataset.\n\nInspect the dataset:\n\nInspect the train dataset. In particular, examine:\n\nThe extent and pattern of missing (NA) values;\nThe value counts of records belonging to each ZBC_status category.\n\n\nIdentify possible predictors:\n\nIdentify a subset of static columns in the dataset that, based on your qualitative understanding of borrower behavior and loan characteristics, could be predictive of “ZBC_status”. Recall from this section that static fields generally describe loan and borrower characteristics at the time of origination.\nBefore running any data analysis, which two of the columns identified above do you expect to be predictive of loan outcome as coded by the target variable “ZBC_status”?\n\nPlan your analysis (carefully):\n\nIdentify the main challenges involved in classifying loan outcomes based on the dataset you constructed and the predictive variables you have identified above;\nDescribe how you tackle these challenges in your analysis. What method (or sequence of methods) will you implement. Assume you have only a couple of hours to produce a “first-iteration” predictive model;\nHow do you plan to evaluate the quality of your predictive model. Be precise.\n\nExecute and review your analysis:\n\nConstruct and run your analysis in a notebook;\nExamine any unexpected results or anomalies. Revise your analysis as necessary.\n\nReport initial findings:\n\nProduce one or more exhibits summarizing your main findings;\nReport / comment on any unexpected results or anomalies.\nReport on any shortcomings of your model in predicting the outcome of loans originating next month\nExplain any limitations of applying your analysis to more recent data, e.g. on loans that originated in year 2018 say.\n\nOutline how you would improve your analysis:"
+    "text": "Mortgage borrowers have the option of early prepayment (inducing interest rate risk for lenders) and the option of default (inducing credit risk for lenders). Therefore, lenders, financial institutions, and investors seek high quaity data analysis that can help them predict the probabilities of the loan outcomes. Understanding the drivers and magnitudes of these risks helps lenders and investors determine criteria for conforming loans, price these loans to reflect their inherest risks, and to accurately value mortgage-backed securities.\n\nTask outline\n\nDownload the train / test sets described in this section.\nPrepare your dataset: Define a new target variable column named “ZBC_status” and compute it as follows:\n\nSet “ZBC_status” to “Prepaid” if “Zero Balance Code” equals “01”;\nSet “ZBC_status” to “Defaulted” if “Zero Balance Code” equals “02”, “03”, “09”, or “15”;\nSet “ZBC_status” to “Other” if “Zero Balance Code” equals “06”, “16”, “96”;\nSet “ZBC_status” to “Current”, otherwise.\n\nInspect the train dataset. In particular, examine: - The extent and pattern of missing (NA) values; - The value counts of records belonging to each ZBC_status category.\nPlan your analysis (carefully):\n\nIdentify the main challenges involved in classifying loan outcomes based on the dataset you constructed and the predictive variables you have identified above;\nDescribe how you tackle these challenges in your analysis. What method (or sequence of methods) will you implement. Assume you have only a couple of hours to produce a “first-iteration” predictive model;\nHow do you plan to evaluate the quality of your predictive model. Be precise.\n\nExecute (Run) and review your analysis:\n\nConstruct and run your analysis in a notebook. Try running different ML models and compare their test set predictive performance.\nExamine any unexpected results or anomalies. Revise your analysis as necessary.\n\nReport initial findings:\n\nProduce one or more exhibits summarizing your main findings. What is the bets fitting model. WHat is its performance on the test set (based on your selected metric)\nReport on any shortcomings / limitation of your model in predicting the outcome of loans originating next month. WHat ideas, if any, do you have for improving your analysis?"
   },
   {
     "objectID": "module_performance_summary.html",
@@ -418,40 +453,5 @@
     "title": "Instructor Resources",
     "section": "",
     "text": "Text goes here."
-  },
-  {
-    "objectID": "other_resources.html#i.-expository-notes",
-    "href": "other_resources.html#i.-expository-notes",
-    "title": "Case Outline",
-    "section": "I. Expository Notes",
-    "text": "I. Expository Notes\n\nNote 1: The Home Mortgage Market Supply Chain in the U.S.\n\n\nNote 2: Recognizing and Overcoming the Challenges of Manipulating Large Datasets\n\n\nNote 3: The Pricing and Execution of Whole Loans by Fannie Mae\n\n\nNote 4: Quantifying the Porfitability of Whole Loans"
-  },
-  {
-    "objectID": "other_resources.html#ii.-case-modules",
-    "href": "other_resources.html#ii.-case-modules",
-    "title": "Case Outline",
-    "section": "II. Case Modules",
-    "text": "II. Case Modules\n\nCase A: Manipulating Modern Business Scale Datasets\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 1\nOther notes\n\n\n\nCase B: Exploratory Data Analysis\n\nLearnig objectives\nMain business question\nCase detailed questions\n\nWhat is your hypothesis about factors predicting “ZBC”\nWhat explains loan volume variations across years (e.g. 2000-2005)\n\nMapping to Ravi’s coure week: 2\nOther notes: Divide into basic; geo; unsupervised\n\n\n\nCase C: Estimate Loan Profit/Loss to-Date\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 2\nOther notes\n\n\n\nCase D1: Classifiy Loan Outcome at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase D2: Classifiy Loan Outcome at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 3 (Classification Week)\nOther notes\n\n\n\nCase E1: Predict Loan Profit/Loss at Origination\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase E2: Predict Loan Profit/Loss at Interim Dates\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 4 (Regression Week)\nOther notes\n\n\n\nCase F: Assess Validity of LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase G: Design Your LLPA Matrix\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week: 5 (Prescriptive Week)\nOther notes\n\n\n\nCase H: Examine Georgaphical Variations\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes\n\n\n\nCase I: Prescriptive Analytics\n\nLearnig objectives\nMain business question\nCase detailed questions\nMapping to Ravi’s coure week\nOther notes"
-  },
-  {
-    "objectID": "other_resources.html#iii.-resources",
-    "href": "other_resources.html#iii.-resources",
-    "title": "Case Outline",
-    "section": "III. Resources",
-    "text": "III. Resources\n\nResource Collection 1: FNMA Public Resources\n\n\nResource Collection 2: Python Resources"
-  },
-  {
-    "objectID": "other_resources.html#iv.-synthetic-datasets",
-    "href": "other_resources.html#iv.-synthetic-datasets",
-    "title": "Case Outline",
-    "section": "IV. Synthetic Datasets",
-    "text": "IV. Synthetic Datasets"
-  },
-  {
-    "objectID": "other_resources.html#v.-instructor-resources",
-    "href": "other_resources.html#v.-instructor-resources",
-    "title": "Case Outline",
-    "section": "V. Instructor Resources",
-    "text": "V. Instructor Resources"
   }
 ]

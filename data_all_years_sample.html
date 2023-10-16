@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Case: End-to-End Mortgage Analytics - A 10% Sample Covering All Years</title>
+<title>Case: Mortgage Analytics - A 10% Sample Covering All Years</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data_train_test.html" rel="next">
+<link href="./data_one_year.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    <span class="navbar-title">Case: Mortgage Analytics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,55 +89,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"> </span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./modules_overview.html" rel="" target="">
- <span class="menu-text">Case Modules</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./expository_overview.html" rel="" target="">
- <span class="menu-text">Expository Notes</span></a>
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">More…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
-        <li>
-    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
- <span class="dropdown-text">Student Resources</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./about.html" rel="" target="">
- <span class="dropdown-text">About</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">MSBA…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
-        <li>
-    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
- <span class="dropdown-text">Case</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
- <span class="dropdown-text">Case Modules</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -234,22 +198,22 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>We provide in this section a consolidated dataset comprising a 10% random sample of the <em>30-year fixed-rate</em> mortgages appearing in Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. For each year, from 2000 to 2022 inclusive<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, we consolidate the data into one row per loan as described in the <a href="./data_consolidation.html">Data Consolidation</a> section, filter out loans whose original loan term did not equal 360 months, and draw a 10% simple random sample of the remaining loans in that year. Sampled loans from all acquisition years are then combined into a single dataset. The dataset consists of 3,897,758 loans. We provide this dataset below in a variety of formats.</p>
+<p>We provide in this section a consolidated dataset comprising a 10% random sample of the <em>30-year fixed-rate</em> mortgages appearing in Fannie Mae’s July 27, 2023 release of its Single-Family Loan Performance primary dataset. For each year, from 2000 to 2022 inclusive<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, we consolidate the data into one row per loan as described in the <a href="./data_consolidation.html">Data Consolidation</a> section, filter out loans whose original loan term did not equal 360 months, and draw a 10% simple random sample of the remaining loans in that year. Sampled loans from all acquisition years are then combined into a single dataset. The dataset consists of 3,897,758 loans. We provide this dataset in several file formats.</p>
 </section>
 <section id="download" class="level3">
 <h3 class="anchored" data-anchor-id="download">Download</h3>
 <section id="delimited-.csv-flat-file-delimiter" class="level4">
 <h4 class="anchored" data-anchor-id="delimited-.csv-flat-file-delimiter">Delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~1,150MB: <a href="https://drive.google.com/file/d/1WcsCWX6hOVox2lIJcFl6nz9HkMI3274j/view?usp=sharing">10_perc_sample.csv</a></li>
-<li>Compressed ~235MB: <a href="https://drive.google.com/file/d/1WkAiiH4qD_NGVxaMknopXIiY8-PQw0cy/view?usp=sharing">10_perc_sample_csv.zip</a></li>
+<li>Uncompressed (~1,150MB) filename: &lt;10_perc_sample.csv&gt;</li>
+<li>Compressed (~235MB) filename: &lt;10_perc_sample_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="feather-.feather-file" class="level4">
 <h4 class="anchored" data-anchor-id="feather-.feather-file">Feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~560MB: <a href="https://drive.google.com/file/d/1Whgnqsubw-NPviB57GDa6wa1LLWW1r2i/view?usp=sharing">10_perc_sample.feather</a></li>
-<li>Compressed ~275MB: <a href="https://drive.google.com/file/d/1WkgIUY-vPloqGsBjK_48DVjx8eWUzWeA/view?usp=sharing">10_perc_sample_feather.zip</a></li>
+<li>Uncompressed (~560MB) filename: &lt;10_perc_sample.feather&gt;</li>
+<li>Compressed (~275MB) filename: &lt;10_perc_sample_feather.zip&gt;</li>
 </ul>
 
 
@@ -496,6 +460,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_one_year.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A One Year Sample</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_train_test.html" class="pagination-link">
+        <span class="nav-page-text">A Train / Test Split</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

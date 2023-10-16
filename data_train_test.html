@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Case: End-to-End Mortgage Analytics - A Train / Test Split</title>
+<title>Case: Mortgage Analytics - A Train / Test Split</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data_all_years_sample.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    <span class="navbar-title">Case: Mortgage Analytics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,55 +88,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"> </span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./modules_overview.html" rel="" target="">
- <span class="menu-text">Case Modules</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./expository_overview.html" rel="" target="">
- <span class="menu-text">Expository Notes</span></a>
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">More…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
-        <li>
-    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
- <span class="dropdown-text">Student Resources</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./about.html" rel="" target="">
- <span class="dropdown-text">About</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">MSBA…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
-        <li>
-    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
- <span class="dropdown-text">Case</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
- <span class="dropdown-text">Case Modules</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -235,20 +198,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>We construct a train / test split of consolidated loan data as follows. We assume the analysts are training (i.e.&nbsp;fitting) their models on data from up to Year 2014 (the first 15 years of acquisition data) and validating / testing their models on data from Year 2015 onwards. Therefore, we construct a train set by considering the loans in the random sample discussed in Section [data_all_years_sample.ipynb] that were acquired prior to Year 2015. For these loans, however, the consolidation of loan data is done with respect to their histories up to the end of Year 2014 only. That is, we set the values of their dynamic fields to those that existed on December 2014 or when the loan reached zero balance whichever was earlier. This strictly ensures no ‘peeking ahead’ in time. For the test / validation set, we consider the loans in the random sample that were acquired in Year 2015 onward. The test set loans are consolidated using their full histories (that is up to the end of Quarter 1 of Year 2023). These train and test sets are provided below in a variety of formats.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-To Do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Discuss whether we need to an explcit split into validation and test sets. For example, loans acquired 2015-2019 would be designated for validation and 2020-2022 would be used for test (with the pandemic wrinkle deliberately thrown in there.) Or, we can just assume cross-validation is utilized.</p>
-</div>
-</div>
+<p>In this final collection of consolidated-loan datasets, we construct a train / test split as follows. We assume the analyst is training (i.e.&nbsp;fitting) their models on data from up to Year 2014 (the first 15 years of acquisition data) and validating / testing their models on data from Year 2015 onwards. Therefore, we construct a train set by considering the loans in the random sample discussed in Section [data_all_years_sample.ipynb] that were acquired prior to Year 2015. For these loans, however, the consolidation of loan data is done with respect to their histories up to the end of Year 2014 only. That is, we set the values of their dynamic fields to those that existed on December 2014 or when the loan reached zero balance whichever was earlier. This strictly ensures no ‘peeking ahead’ in time. For the test / validation set, we consider the loans in the random sample that were acquired in Year 2015 onward. The test set loans are consolidated using their full histories (that is up to the end of Quarter 1 of Year 2023). These train and test sets are provided in several file formats.</p>
 </section>
 <section id="train-set" class="level3">
 <h3 class="anchored" data-anchor-id="train-set">Train set</h3>
@@ -256,15 +206,15 @@ To Do
 <section id="download-delimited-.csv-flat-file-delimiter" class="level4">
 <h4 class="anchored" data-anchor-id="download-delimited-.csv-flat-file-delimiter">Download delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~585MB: <a href="https://drive.google.com/file/d/1AS0iG3rYTcslZV9GS30-SHZD6Y5Zys3V/view?usp=drive_link">train_sample_consolidated.csv</a></li>
-<li>Compressed ~125MB: <a href="https://drive.google.com/file/d/1X31g5FqIKp90SfTa3ytxb-oAfIyXmZd8/view?usp=sharing">train_sample_consolidated_csv.zip</a></li>
+<li>Uncompressed (~585MB) filename: &lt;train_sample_consolidated.csv&gt;</li>
+<li>Compressed (~125MB) filename: &lt;train_sample_consolidated_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="download-feather-.feather-file" class="level4">
 <h4 class="anchored" data-anchor-id="download-feather-.feather-file">Download feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~285MB: <a href="https://drive.google.com/file/d/1AIaDMyZkIfDHmENxz99a9n5pbJynxLV2/view?usp=sharing">train_sample_consolidated.feather</a></li>
-<li>Compressed ~140MB: <a href="https://drive.google.com/file/d/1WwZs_pRrPLkW3X9GG6ingAPq984CpKTP/view?usp=sharing">train_sample_consolidated_feather.zip</a></li>
+<li>Uncompressed (~285MB) filename: &lt;train_sample_consolidated.feather&gt;</li>
+<li>Compressed (~140MB) filename: &lt;train_sample_consolidated_feather.zip&gt;</li>
 </ul>
 </section>
 </section>
@@ -274,15 +224,15 @@ To Do
 <section id="download-delimited-.csv-flat-file-delimiter-1" class="level4">
 <h4 class="anchored" data-anchor-id="download-delimited-.csv-flat-file-delimiter-1">Download delimited &lt;.csv&gt; flat file (delimiter: “|”)</h4>
 <ul>
-<li>Uncompressed ~500MB: <a href="https://drive.google.com/file/d/1AIkJJXrHzGp03cSW085G1QO9b3ZGB6k_/view?usp=sharing">test_sample_consolidated.csv</a></li>
-<li>Compressed ~100MB: <a href="https://drive.google.com/file/d/1X56BoFiXrYJjwj3EK7N6OqwHs0NGzQoS/view?usp=sharing">test_sample_consolidated_csv.zip</a></li>
+<li>Uncompressed (~500MB) filename: &lt;test_sample_consolidated.csv&gt;</li>
+<li>Compressed (~100MB) filename: &lt;test_sample_consolidated_csv.zip&gt;</li>
 </ul>
 </section>
 <section id="download-feather-.feather-file-1" class="level4">
 <h4 class="anchored" data-anchor-id="download-feather-.feather-file-1">Download feather &lt;.feather&gt; file</h4>
 <ul>
-<li>Uncompressed ~225: <a href="https://drive.google.com/file/d/1AOUUoMmCc39yuifVBelXy8kgEenMDRM9/view?usp=sharing">test_sample_consolidated.feather</a></li>
-<li>Compressed ~115: <a href="https://drive.google.com/file/d/1XBxT6aqMmAFOLTCCqzCPqCaCH4RVe5v6/view?usp=sharing">test_sample_consolidated_feather.zip</a></li>
+<li>Uncompressed (~225MB) filename: &lt;test_sample_consolidated.feather&gt;</li>
+<li>Compressed (~115MB) filename: &lt;test_sample_consolidated_feather.zip&gt;</li>
 </ul>
 
 
@@ -523,6 +473,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_all_years_sample.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A 10% Sample Covering All Years</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

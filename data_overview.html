@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Case: End-to-End Mortgage Analytics - Overview</title>
+<title>Case: Mortgage Analytics - Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data_raw.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    <span class="navbar-title">Case: Mortgage Analytics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,55 +88,17 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"> </span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./modules_overview.html" rel="" target="">
- <span class="menu-text">Case Modules</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./expository_overview.html" rel="" target="">
- <span class="menu-text">Expository Notes</span></a>
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">More…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
-        <li>
-    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
- <span class="dropdown-text">Student Resources</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./about.html" rel="" target="">
- <span class="dropdown-text">About</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">MSBA…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
-        <li>
-    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
- <span class="dropdown-text">Case</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
- <span class="dropdown-text">Case Modules</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -225,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Extensive data on a portion of mortgages acquired by Fannie Mae is accssible through Fannie Mae’s Data Dynamics portal. The first section below helps you get started with this dataset. The second section highlights the need to consolidate the data into one row per loan. The remaining sections provide samples of such consolidated loan data derived from Fannie Mae’s data.</p>
+<p>Extensive data on a portion of the mortgages acquired by Fannie Mae since year 2000 is accssible through Fannie Mae’s Data Dynamics portal. The first subsection below helps you get started with this dataset. The second section highlights the need to consolidate the data, which tracks each loan’s performance each month, into a one row per loan summary. The remaining sections provide samples of such consolidated loan data derived from Fannie Mae’s data.</p>
 <ul>
 <li><a href="./data_raw.html">Fannie Mae’s Data</a></li>
 <li><a href="./data_consolidation.html">Data Consolidation</a></li>
@@ -233,21 +196,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="./data_all_years_sample.html">A 10% Sample Covering All Years</a></li>
 <li><a href="./data_train_test.html">A Train / Test Split</a></li>
 </ul>
-<p>If you need to work with the most detailed and recent mortgage data or if you wish to gain experience in manipulating large datasets then your best starting point is Fannie Mae’s data portal. If you wish to by-pass much of the data prep work then you will find that the consolidated data samples we have included here provide convenient on-ramps into your analysis.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-To Do
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Need to check Fannie Mae’s <a href="https://capitalmarkets.fanniemae.com/media/20956/display">Terms and Conditions</a> and/or obtain permission from Fannie Mae before posting consolidated loan data.</p>
-<p>“For more information regarding external commercial use or redistribution of this data, please contact Fannie Mae’s Fixed-Income Marketing at 800-2FANNIE (800-232-6643) or by <a href="https://capitalmarkets.fanniemae.com/form/main-contact-form">email</a>.”</p>
-</div>
-</div>
+<p>If you need to work with the most detailed and recent mortgage data or if you wish to gain experience in manipulating large datasets then your best starting point is Fannie Mae’s data portal itself followed by <a href="./module_data_prep.html">Case Module 0: Data Pre-processing</a>. However, if you wish to by-pass much of the data prep work then you will find that the consolidated data samples we have included here provide convenient on-ramps into your analysis.</p>
 
 
 
@@ -485,6 +434,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_raw.html" class="pagination-link">
+        <span class="nav-page-text">Fannie Mae’s Data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

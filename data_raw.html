@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Case: End-to-End Mortgage Analytics - Fannie Mae’s Data</title>
+<title>Case: Mortgage Analytics - Fannie Mae’s Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,6 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./data_consolidation.html" rel="next">
+<link href="./data_overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Case: End-to-End Mortgage Analytics</span>
+    <span class="navbar-title">Case: Mortgage Analytics</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -121,55 +123,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"> </span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./modules_overview.html" rel="" target="">
- <span class="menu-text">Case Modules</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link active" href="./data_overview.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./expository_overview.html" rel="" target="">
- <span class="menu-text">Expository Notes</span></a>
+    <a class="nav-link" href="./modules_overview.html" rel="" target="">
+ <span class="menu-text">Case Modules</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">More…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more...">    
-        <li>
-    <a class="dropdown-item" href="./student_resources.html" rel="" target="">
- <span class="dropdown-text">Student Resources</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./about.html" rel="" target="">
- <span class="dropdown-text">About</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-msba..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
- <span class="menu-text">MSBA…</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-msba...">    
-        <li>
-    <a class="dropdown-item" href="./case_v0.html" rel="" target="">
- <span class="dropdown-text">Case</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_modules_overview.html" rel="" target="">
- <span class="dropdown-text">Case Modules</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./MSBA_instructor_resources.html" rel="" target="">
- <span class="dropdown-text">Instructor Resources</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
             <div class="quarto-navbar-tools">
 </div>
@@ -271,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="the-dataset">The Dataset</h3>
 <p>Fannie Mae publishes granular data representative of a portion of the single-family home mortgages it acquired since year 2000. The data is available on their website here: <a href="https://capitalmarkets.fanniemae.com/credit-risk-transfer/single-family-credit-risk-transfer/fannie-mae-single-family-loan-performance-data">Fannie Mae Single-Family Loan Performance Data</a>. The types of mortgages included in the dataset, and various exclusions and limitations, are described in items 1 and 2 of this <a href="https://capitalmarkets.fanniemae.com/media/8921/display">FAQ</a> document.</p>
-<p>Throughout this case, we refer to the <em>July 27, 2023 release</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> of the <em>primary</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> dataset. This dataset covers approximately 55 million mortgage loans. <em>Monthly</em> performance data is provided for <em>each loan</em> starting from the time of acquisition through to the end of the first quarter of year 2023 or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier. Therefore, each row pertains to a particular loan at a particular month. The full dataset consists of approximately 2.5 billion records (rows) and approximately 65-70 applicable fields (columns).</p>
+<p>Throughout this case, we refer to the <em>July 27, 2023 release</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> of the <em>primary</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> dataset. This dataset covers approximately 55 million mortgage loans. Monthly performance data is provided for each loan starting from the time of acquisition through to the end of the first quarter of year 2023 or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier. Therefore, each record (row) of this dataset is a snapshot of a particular loan at a particular month. The full dataset consists of approximately 2.5 billion records (rows) and approximately 65-70 applicable attributes (columns).</p>
 </section>
 <section id="access" class="level3">
 <h3 class="anchored" data-anchor-id="access">Access</h3>
@@ -280,9 +244,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="details" class="level3">
 <h3 class="anchored" data-anchor-id="details">Details</h3>
 <p>The data is subdivided into quarterly files. Data on all loans acquired by Fannie Mae in a given quarter are included in that quarter’s file. That is, each loan appears in exactly one quarterly file.</p>
-<p>A quarterly file contains <em>all</em> monthly reporting periods for the loans acquired in that quarter. That file provides the full monthly performance history of each loan starting from its acquisition quarter until the present (end of year 2022) or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier.</p>
-<p>Note that some loans acquired in a given quarter may have <em>originated</em> in earlier quarters. Note also that, while the files are labelled as “csv”, the fields are in fact separated by the vertical line “|” delimiter<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<p>Fannie Mae provides a (tiny) <a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/sf-loan-performance-data-sample.csv">sample file</a>, consisting of a handful of loan, to illustrate the structure of the dataset. The data files contain no column headings. However, a detailed description of the fields, identified positionally, is available in the accompanying “CRT Glossary and File Layout” document [<a href="https://capitalmarkets.fanniemae.com/media/6931/display">pdf</a>][<a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/crt-file-layout-and-glossary.xlsx">Excel</a>].</p>
+<p>A quarterly file contains <em>all</em> monthly reporting periods for the loans acquired in that quarter. That file provides the full monthly performance history of each loan starting from its acquisition quarter until the release date of the dataset (end of Q1 of year 2023) or until the loan reaches zero balance (through prepayment, liquidation, etc.) whichever is earlier.</p>
+<p>Note that some loans acquired in a given quarter may have <em>originated</em> in earlier quarters. Note also that, while the files are labelled as “csv”, the fields are in fact separated by vertical line “|” delimiters, not by commas<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Fannie Mae provides a (tiny) <a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/sf-loan-performance-data-sample.csv">sample file</a> consisting of a handful of loan to illustrate the structure of the dataset. The data files contain no column headings. However, a detailed description of the fields, identified positionally, is available in the accompanying “CRT Glossary and File Layout” document [<a href="https://capitalmarkets.fanniemae.com/media/6931/display">pdf</a>][<a href="https://capitalmarkets.fanniemae.com/resources/file/credit-risk/xls/crt-file-layout-and-glossary.xlsx">Excel</a>].</p>
 <p>There is a total of 108 columns in each quarterly data file. The following ordered list of column names can be helpful in importing the data:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>col_names = ["Reference Pool ID", "Loan Identifier", "Monthly Reporting Period", "Channel", "Seller Name", </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             "Servicer Name", "Master Servicer", "Original Interest Rate", "Current Interest Rate", "Original UPB", </span>
@@ -307,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>             "ARM Plan Number", "Borrower Assistance Plan", "High Loan to Value (HLTV) Refinance Option Indicator", "Deal Name", "Repurchase Make Whole Proceeds Flag", </span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>             "Alternative Delinquency Resolution", "Alternative Delinquency Resolution Count", "Total Deferral Amount"</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The fields “Loan Identifier” and “Monthly Reporting Period”, in conjunction, serve as unique key identifier to the dataset records.</p>
+<p>The fields “Loan Identifier” and “Monthly Reporting Period”, when used in conjunction, serve as unique key identifier to the dataset records.</p>
 <p>We also provide a Python dictionary of suggested data types for each field that can be optionally used when importing the data:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>col_dtypes = {"Reference Pool ID": "string", "Loan Identifier": "string", "Monthly Reporting Period": "object", "Channel": "string", "Seller Name": "string", </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              "Servicer Name": "string", "Master Servicer": "string", "Original Interest Rate": "float64", "Current Interest Rate": "float64", "Original UPB": "float64", </span>
@@ -332,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>              "ARM Plan Number": "float64", "Borrower Assistance Plan": "string", "High Loan to Value (HLTV) Refinance Option Indicator": "string", "Deal Name": "string", "Repurchase Make Whole Proceeds Flag": "string", </span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>              "Alternative Delinquency Resolution": "string", "Alternative Delinquency Resolution Count": "float64", "Total Deferral Amount": "float64"</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>             }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Several fields do not apply to or do not vary across the loans included in this dataset and can be excluded from analysis<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>:</p>
+<p>Several columns do not apply to, or do not vary across, the loans included in this dataset and can be excluded from analysis<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. These columns are:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cols_na = ["Reference Pool ID", "Master Servicer", "UPB at Issuance", "Prepayment Penalty Indicator", "Interest Only Loan Indicator", </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           "Interest Only First Principal And Interest Payment Date", "Months to Amortization""Mortgage Insurance Cancellation Indicator", "Repurchase Date", "Scheduled Principal Current", "Unscheduled Principal Current", </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           "Original List Start Date", "Original List Price", "Current List Start Date", "Current List Price", "Borrower Credit Score At Issuance", </span>
@@ -343,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           "Periodic Interest Rate Cap Up Percent", "Lifetime Interest Rate Cap Up Percent", "Mortgage Margin", "ARM Balloon Indicator", "ARM Plan Number", </span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           "Deal Name"</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The remaining columns, aside from “Loan Identifier” and “Monthly Reporting Period”, can be partitioned into two sets: <strong>static</strong> and <strong>dynamic</strong>. A loan’s static fields do not change over reporting periods and generally denote loan or borrower characteristics at the time of origination or acquisition; e.g.&nbsp;“Original UPB”. Dynamic fields, on the other hand, can or are expected to change over time; e.g.&nbsp;“Current Actual UPB”. We provide below a list of static and of dynamic column names:</p>
+<p>The remaining columns or fields, aside from “Loan Identifier” and “Monthly Reporting Period”, can be partitioned into two sets: <strong>static</strong> and <strong>dynamic</strong>. In general, a loan’s static columns fields do not change over reporting periods and typically denote loan or borrower characteristics at the time of origination or acquisition; e.g.&nbsp;“Original UPB”. Dynamic fields, on the other hand, can or are expected to change over time; e.g.&nbsp;“Current Actual UPB”. We provide below a list of static and of dynamic column names:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>col_static = ["Channel", "Seller Name", "Original Interest Rate", "Original UPB", "Original Loan Term", </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>              "Origination Date", "First Payment Date", "Original Loan to Value Ratio (LTV)", "Original Combined Loan to Value Ratio (CLTV)", "Number of Borrowers", </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              "Debt-To-Income (DTI)", "Borrower Credit Score at Origination", "Co-Borrower Credit Score at Origination", "First Time Home Buyer Indicator", "Loan Purpose", </span>
@@ -381,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol>
 <li id="fn1"><p>Fannie Mae updates the dataset quarterly<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>We ignore the accompanying HARP dataset<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>This delimiter is useful when some values include commas<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The “|” delimiter is preferable when some values include commas<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Fannie Mae provides them for compatibility with other dataset disclosures<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
@@ -618,6 +582,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_overview.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data_consolidation.html" class="pagination-link">
+        <span class="nav-page-text">Data Consolidation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
